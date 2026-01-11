@@ -32,13 +32,26 @@ def fetch(source, scan):
         if source == 'reddit': skills = fetcher.RedditFetcher(config).fetch_all()
         elif source == 'github': skills = fetcher.GitHubFetcher(config).fetch_all()
         else: skills = fetcher.fetch_all_sources(config)
-    
+
     if not skills:
         console.print("[yellow]No new skills found.[/yellow]")
         return
-    
-    console.print(f"[green]Found {len(skills)} potential skills[/green]")
-    
+
+    # Filter out already-seen URLs BEFORE scanning (saves API credits)
+    seen_urls = storage.get_seen_urls()
+    original_count = len(skills)
+    skills = [s for s in skills if s.url not in seen_urls]
+    skipped = original_count - len(skills)
+
+    if skipped > 0:
+        console.print(f"[dim]Skipped {skipped} already-seen posts[/dim]")
+
+    if not skills:
+        console.print("[yellow]No new skills to process.[/yellow]")
+        return
+
+    console.print(f"[green]Found {len(skills)} new skills[/green]")
+
     if scan:
         with console.status("[bold blue]Running safety scan..."):
             results = scanner.scan_batch(skills, config)
