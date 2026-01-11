@@ -180,5 +180,117 @@
       "llm_analysis": null
     },
     "added_at": "2026-01-10T19:48:17.594842"
+  },
+  {
+    "id": "0e6d3956a1c3",
+    "title": "Some tips for other newbs like me",
+    "content": "**Disclaimer**: I'm on the 5x plan, and I almost exclusively use Opus 4.5 in Claude Code CLI (unless I'm \"writing\" copy, then Sonnet 4.5)\n\nI was burning through consumption on the Pro plan and decided to upgrade to 5x.  I hit usage limits a lot less now, but I still try to be as token-efficient as possible. I work on 3 different projects simultaneously, after all.  So - instead of just entering in basic prompts like \"fix this bug: ... \" or \"add this feature: ...\" I upped my game a bit.  \n\nHere's some strategies that have worked for me, boosting my own productivity and preventing a) undesirable bugs from surfacing and b) creating more token efficiency to help me burn through less utilization. \n\n**Use /plan** before every \\[decent-sized\\] bug fix and feature add.  When asking for a plan with /plan, specify the following: \"in your plan, detail implementation steps that you could address in chunks, without having prior context fresh in memory to address the subsequent chunk.\" (I'll explain this more down below)\n\n**Run /clear after every task completion and plan creation.**  If there's some persistent bug that Claude can't seem to figure out how to fix, still run /clear to prevent racking up some giant context drag.\n\nIn your prompt, **give Opus 4.5 a persona**.  e.g. \"You are a senior engineer and award-winning game developer that's renown for building highly performant and addicting games. Build this feature: ...\"  (this is a real one I use, works great).\n\nTaking this a step further - so you don't have a) write this persona out everytime and b) have Claude weigh in on how to improve it even more:  **Create your own custom agent with the /agents slash command**.  I always select \"use claude to help you..\" or whatever it says.  I enter a description of the persona and it generates the agent specs for me. \n\nChaining these all together, my workflow has become...\n\n**use \\[enter agent name\\] to implement Chunks 1-3 in plan \\[paste plan path\\]. Verify no unintended consequences were created from your changes.** \n\n**/clear**\n\n**use game-dev-agent to implement Chunks 4-6 in plan \\[paste plan path\\]. Verify no unintended consequences were created from your changes.** \n\n**/clear**\n\n...rinse &amp; repeat...\n\nI'm sure I'm just barely scratching the surface here, I'd love to hear what I could be doing better.  Please share your own tips in the comments.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q9hoe6/some_tips_for_other_newbs_like_me/",
+    "author": "u/bri-_-guy",
+    "score": 32,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 6
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": "RISK_LEVEL: SAFE\nSUMMARY: This appears to be legitimate workflow advice for Claude Code CLI usage with no apparent security risks - it focuses on token efficiency and productivity optimization using built-in features."
+    },
+    "added_at": "2026-01-11T09:56:11.993667"
+  },
+  {
+    "id": "6133bd9ad9f9",
+    "title": "My static analysis toolkit to catch what Claude Code misses",
+    "content": "Following my\u00a0[previous post about TODO-driven development](https://www.reddit.com/r/ClaudeAI/comments/1q85tlf/i_feel_like_ive_just_had_a_breakthrough_with_how/), several people asked about the static analysis scripts I mentioned. Here you go:\n\nThe Problem:\n\nWhen you're building a large project with Claude Code, you face a unique challenge:\u00a0the AI generates code faster than you can verify it. Claude is remarkably capable, but it doesn't have perfect memory of your entire codebase. Over time, small inconsistencies creep in:\n\n* A Go struct gains a field, but the TypeScript interface doesn't\n* A database column gets added, but the repository struct is missing it\n* A new API endpoint exists in handlers but isn't documented\n* Tests cover happy paths but miss edge cases for 3 of your 27 implementations\n* Query complexity grows without anyone noticing until production slows down\n\nThis is called\u00a0drift\u00a0- the gradual divergence between what should be true and what actually is.\n\nManual code review doesn't scale when Claude is writing 500+ lines per session. I needed automated verification.\n\nThe Solution: Purpose-Built Static Analysis\n\nOver the past \\~9 weeks, I built 14 CLI tools that analyze my Go/TypeScript codebase. Each tool targets a specific category of drift or risk. Here's a couple of them:\n\n# Type Safety &amp; Contract Drift\n\n**1. api-contract-drift**\u00a0\\- Detects mismatches between Go API response types and TypeScript interfaces\n\n    $ go run ./cmd/api-contract-drift\n    DRIFT DETECTED: UserResponse\n      - MissingInTS: CreatedAt (Go has it, TypeScript doesn't)\n      - TypeMismatch: Balance (Go: decimal.Decimal, TS: number)\n    \n\nThis alone has saved me countless runtime bugs. When Claude adds a field to a Go handler, this tool screams if the frontend types weren't updated.\n\n**2. schema-drift-detector**\u00a0\\- Ensures database schema matches Go struct definitions\n\n* Catches orphan columns (DB has it, Go doesn't)\n* Catches orphan fields (Go has it, DB doesn't)\n* Detects type mismatches (critical!)\n* Flags nullable columns without pointer types in Go\n* Identifies missing foreign key indexes\n\n# Code Quality &amp; Security\n\n**3. code-audit**\u00a0\\- The big one. 30+ individual checks across categories:\n\n* **Security:**\u00a0SQL injection vectors, CSRF protection, rate limit vulnerabilities, credential leaks\n* **Quality:**\u00a0N+1 query detection, transaction boundary verification, error response format validation\n* **Domain-specific:**\u00a0Balance precheck race conditions, order status verification, symbol normalization\n\n&amp;#8203;\n\n    $ go run ./cmd/code-audit --category security --format markdown\n    \n\nI run this in CI. Any critical finding blocks the build.\n\n**4. query-complexity-analyzer**\u00a0\\- Scores SQL queries for performance risk\n\n* JOINs, subqueries, GROUP BY, DISTINCT all add to complexity score\n* Flags queries above threshold (default: 20 points)\n* Detects N+1 patterns and implicit JOINs\n* Catches dynamic WHERE clause construction (SQL injection risk)\n\n# Test Coverage Analysis\n\n**5. implementation-test-coverage**\u00a0\\- My project has 27+ specific implementations. This tool:\n\n* Categorizes tests into 14 types (HTTP Mock, Unit, Error Map, Fuzz, Chaos, etc.)\n* Tracks compliance suite coverage (55 shared tests all specific implementations must pass)\n* Identifies which implementations are missing which test categories\n* Maintains a baseline JSON for regression detection\n\n&amp;#8203;\n\n    implementation_A:     142/140 tests (PASS)\n    implementation_B:     138/140 tests (MISSING: chaos, fuzz)\n    implementation_C:     89/115 tests  (FAIL - below mandatory minimum)\n    \n\nThis visibility transformed how I prioritize test writing.\n\n**6. test-type-distribution**\u00a0\\- Shows test type breakdown across the entire codebase\n\n# Architecture &amp; Dead Code\n\n**7. service-dependency-graph**\u00a0\\- Maps service-to-repository dependencies\n\n* Outputs Mermaid diagrams for visualization\n* Catches circular dependencies\n* Shows which services are becoming \"god objects\"\n\n**8. unused-repository-methods**\u00a0\\- Finds dead code\n\n* When Claude refactors, old methods sometimes get orphaned\n* This tool finds them before they rot\n\n**9. missing-index-detector**\u00a0\\- Identifies queries that could benefit from indexes\n\n**10. api-endpoint-inventory**\u00a0\\- Catalogs all HTTP routes\n\n* Essential when you need to verify documentation completeness\n\n# Additional Tools\n\n* **code-stats**\u00a0\\- Generates codebase metrics (lines by package, test-to-code ratio)\n* **implementation-consistency**\u00a0\\- Validates consistent implementation across my implementation clients\n* **symbol-conversion-audit**\u00a0\\- Checks symbol normalization consistency\n* **mock-implementation-finder**\u00a0\\- Finds TODO stubs in test files\n\n# Design Principles\n\nEvery tool follows the same pattern:\n\n1. **Multiple output formats:**\u00a0text (human), JSON (CI), markdown (reports)\n2. **CI mode:**\u00a0Returns appropriate exit codes\n3. **Focused scope:**\u00a0Each tool does one thing well\n4. **Fast execution:**\u00a0Most run in &lt;2 seconds\n\nExample structure:\n\n    func main() {\n        format := flag.String(\"format\", \"text\", \"Output format: text, json, markdown\")\n        ciMode := flag.Bool(\"ci\", false, \"CI mode - exit 1 on findings\")\n        \n    // ... parse flags, find project root via go.mod, run analysis\n    }\n    \n\n# How I Use These\n\n**Daily workflow:**\n\n    # Quick health check\n    go run ./cmd/api-contract-drift\n    go run ./cmd/schema-drift-detector\n    \n    # Before commits\n    go run ./cmd/code-audit --ci\n    \n\n**Weekly deep dive:**\n\n    # Generate reports\n    go run ./cmd/code-stats &gt; docs/reports/stats-$(date +%Y-%m-%d).md\n    go run ./cmd/implementation-test-coverage --format markdown\n    go run ./cmd/query-complexity-analyzer --format markdown\n    \n\n**In CI pipeline:**\n\n* api-contract-drift (blocks on any drift)\n* schema-drift-detector (blocks on type mismatches)\n* code-audit --category security (blocks on critical findings)\n\n# What I Learned\n\n1. **Build tools for YOUR pain points.**\u00a0Generic linters catch generic issues. Your project has domain-specific risks. Build for those.\n2. **JSON output is crucial.**\u00a0It lets you pipe results into other tools, track trends over time, and integrate with CI.\n3. **Fast feedback &gt; perfect analysis.**\u00a0A tool that runs in 1 second gets run constantly. A tool that takes 30 seconds gets skipped.\n4. **Let the tool find the project root.**\u00a0All my tools walk up looking for\u00a0`go.mod`. This means they work from any subdirectory.\n5. **Severity levels matter.**\u00a0Not every finding is equal. Critical blocks CI. Warning gets logged. Info is for reports.\n\n# The Psychological Benefit\n\nJust like my TODO-driven approach, these tools reduce anxiety. I no longer wonder \"did I miss something?\" because I have automated verification running constantly.\n\nClaude is an incredible coding partner, but trust needs verification. These tools are my verification layer. It also saves me a lot of tokens - I saw Claude doing the same bash searches over and over again, and each search takes about 5 to 10 seconds between one search -&gt; \"thinking\" -&gt; the next search. This wastes time and tokens. Now I just run my scripts and tell Claude which files to specifically target in my next task.\n\nI'm happy to share more details or guided brainstorming on how to determine which tools you need based on your unique codebase/project. If there's interest, I could write up another post focusing on this.\n\nWhat static analysis have you found valuable for your AI-assisted development? I'm always looking to add new checks.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q9tlaf/my_static_analysis_toolkit_to_catch_what_claude/",
+    "author": "u/wynwyn87",
+    "score": 24,
+    "date": "2026-01-11",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 5
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL",
+        "\u26a1 Command substitution"
+      ],
+      "llm_analysis": "RISK_LEVEL: WARNING\n\nSUMMARY: Tool suite appears legitimate but lacks source code verification - the SQL injection detection and credential leak scanning could be bypassed or contain blind spots, and running unverified static analysis tools in CI pipelines introduces supply chain risks."
+    },
+    "added_at": "2026-01-11T09:56:11.998680"
+  },
+  {
+    "id": "519777d17b2b",
+    "title": "Claude Code + macbook makes don't even care anymore",
+    "content": "I'm a software engineer who spent years as a DevOps guy, so I know Google Cloud and AWS probably better than some of their own employees at this point. But honestly? I don't care anymore. For my personal projects I just spawn Claude with access to a local Bun server and send requests to it. It's ridiculous how well it works.\n\nMy MacBook's CPU is so good and having Claude able to monitor things has made me genuinely lazy about infrastructure. The thought of spawning machines, SSH-ing into them, and setting everything up from scratch just doesn't appeal to me anymore. I've got 14 background CPU-heavy pipeline tasks running locally and it handles them fine.\n\nSo here's what's confusing me. Everyone praises Daytona and these AI-focused sandboxes like crazy. Theo's always going on about how great they are. But honestly I don't get the value at all. Am I missing something or have I just accidentally solved the problem they're trying to solve?\n\nTo be clear, this is all personal project stuff, not production work. Claude Code basically acts as a watcher for my local server pipeline. It monitors everything and warns me if something's running wrong. Combined with my Mac's raw compute power, it just... works. I don't need cloud infrastructure for this.\n\nOP note: asked to claude rewrite it lol \u2764\ufe0f",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q9sayh/claude_code_macbook_makes_dont_even_care_anymore/",
+    "author": "u/Specialist_Farm_5752",
+    "score": 51,
+    "date": "2026-01-11",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 67
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [],
+      "llm_analysis": "RISK_LEVEL: WARNING\n\nSUMMARY: Describes giving Claude local server access and system monitoring capabilities without mentioning authentication, access controls, or security boundaries, which could enable unauthorized system access or privilege escalation if Claude is compromised or manipulated."
+    },
+    "added_at": "2026-01-11T09:56:11.999177"
+  },
+  {
+    "id": "a516fbed5329",
+    "title": "A Vision for a Claude Code IDE",
+    "content": "\\*\\*Edit\\*\\*: Not sure if you can actually see the video on reddit so here's the youtube link: [https://youtu.be/YzfDog-tRmo?si=c2tUgR24vjRter2M](https://youtu.be/YzfDog-tRmo?si=c2tUgR24vjRter2M)\n\n\n\nI've been using Claude Code constantly and it's become one of the most powerful tools in my workflow. But I'm not a terminal person. I like seeing my files in a tree. I want visual feedback.\n\nSo over the past few weeks, I started designing what a dedicated Claude Code IDE might look like, not a VS Code extension, but a purpose-built interface that treats Claude as a first-class collaborator.\n\nI made a video walkthrough and a live demo you can play with. Some highlights:\n\n**Context Graph**: A visual way to see and edit everything Claude knows. Your preferences, org standards, project context. When Claude's referencing something out of date, you can just fix it instead of wrestling with prompts.\n\n**Interview Mode**: Claude asks clarifying questions before diving in. Saves hours of reworking.\n\n**Skill Preservation**: This one was inspired by some of Anthropic's own research I was reading where they mentiond their own engineers were worried about skill atrophy. I think this is an important feature not just for coders but whoever might be using this for knowledge work. You can tell Claude which skills you want to keep sharp, and sometimes it'll suggest you write that part manually, just enough to keep the muscle memory alive.\n\n**Live Annotations**: For people building with AI who don't fully understand every tool they're using, or really by extension for anything where Claude needs to refer to something on the screen. Claude can walk you through things like source control with interactive on-screen annotations.\n\n**Workflows**: Visual node-based workflows that you can build or have Claude build for you. Code reviews, security audits, whatever you do repeatedly. I'm imagining this would be a great way to use their Agents SDK or have claude connect the parts for you so you can build the backend for a user-facing agent, stuff like that.\n\n**Profile**: A meta layer where Claude reflects on your week, tracks skills you're developing, and helps you see your own trajectory. Not just \"what did I ship\" but \"how am I growing.\"\n\nI tried to think through the whole user experience, not just bolt on features. The design language is warm (Anthropic's earthy tones) with a signature \"notched container\" element that nods to the terminal origins.\n\nCurious what you all think. What's missing? What would you want in a Claude Code IDE? I know a lot of people super love the terminal but tbh I've just always worked in an IDE and that's how I prefer to work (and the people who love using terminals should be able to keep working that way of course). I also think that\n\nLive demo: [https://claudecodeide.vercel.app/](https://claudecodeide.vercel.app/)\n\nBlog post with more detail: [https://www.justinwetch.com/blog/claudecodeide](https://www.justinwetch.com/blog/claudecodeide)\n\nThank you for your time and checking this out! Built with claude btw ;-)",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q9fqiq/a_vision_for_a_claude_code_ide/",
+    "author": "u/JustinWetch",
+    "score": 47,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 21
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": "RISK_LEVEL: WARNING\nSUMMARY: Contains external links to YouTube, Vercel demo, and personal blog that could potentially host malicious content or be used for phishing, though the content itself appears to be a legitimate IDE concept presentation."
+    },
+    "added_at": "2026-01-11T09:56:11.999794"
+  },
+  {
+    "id": "75c22649e400",
+    "title": "I built an agent to triage production alerts",
+    "content": "Hey folks,\n\nI just coded an AI on-call engineer that takes raw production alerts, reasons with context and past incidents, decides whether to auto-handle or escalate, and wakes humans up only when it actually matters.\n\nWhen an alert comes in, the agent reasons about it in context and decides whether it can be handled safely or should be escalated to a human.\n\nThe flow looks like this:\n\n* An API endpoint receives alert messages from monitoring systems\n* A durable agent workflow kicks off\n* LLM reasons about risk and confidence\n* Agent returns Handled or Escalate\n* Every step is fully observable\n\nWhat I found interesting is that the agent gets better over time as it sees repeated incidents. Similar alerts stop being treated as brand-new problems, which cuts down on noise and unnecessary escalations.\n\nThe whole thing runs as a durable workflow with step-by-step tracking, so it\u2019s easy to see how each decision was made and why an alert was escalated (or not).\n\nThe project is intentionally focused on the triage layer, not full auto-remediation. Humans stay in the loop, but they\u2019re pulled in later, with more context.\n\nIf you want to see it in action, I put together a full walkthrough\u00a0[here](https://www.tensorlake.ai/blog/building-outage-agent).\n\nAnd the code is up here if you\u2019d like to try it or extend it:\u00a0[GitHub Repo](https://github.com/tensorlakeai/examples/tree/main/outage-agent)\n\nWould love feedback from you if you have built similar alerting systems.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q7k6lz/i_built_an_agent_to_triage_production_alerts/",
+    "author": "u/Arindam_200",
+    "score": 20,
+    "date": "2026-01-08",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 3
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": "RISK_LEVEL: WARNING\n\nSUMMARY: Legitimate project with security concerns around AI-based alert triage having potential for false negatives that could suppress critical alerts, plus typical risks of automated systems handling production security events without sufficient human oversight."
+    },
+    "added_at": "2026-01-11T09:56:12.000345"
   }
 ]
