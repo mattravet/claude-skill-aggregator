@@ -1,0 +1,44 @@
+reddit:
+  subreddits:
+    - ClaudeAI
+    - anthropic
+    - cursor
+    - ChatGPTCoding
+  min_score: 20
+  queries:
+    - "claude code tip"
+    - "CLAUDE.md"
+    - "claude workflow"
+  lookback_days: 7
+
+github:
+  watch_repos:
+    - anthropics/claude-code
+    - anthropics/courses
+  queries:
+    - "filename:CLAUDE.md"
+    - "claude code workflow"
+  min_stars: 10
+  trusted_authors:
+    - anthropics
+
+scanner:
+  use_llm: true
+  llm_model: "claude-sonnet-4-20250514"
+  blocklist_patterns:
+    - "curl.*\\|.*sh"
+    - "eval\\("
+    - "base64"
+    - "rm -rf"
+    - "sudo"
+  warning_patterns:
+    - "https?://"
+    - "chmod"
+    - "pip install"
+    - "&&"
+
+export:
+  format: "markdown"
+  include_metadata: true
+  auto_commit: true
+  commit_prefix: "skills:"
