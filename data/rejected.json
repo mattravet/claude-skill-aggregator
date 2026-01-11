@@ -207,5 +207,30 @@
     "added_at": "2026-01-10T19:48:17.592089",
     "rejected_at": "2026-01-11T09:27:12.356302",
     "rejection_reason": "Product announcement"
+  },
+  {
+    "id": "aff2d6fb9598",
+    "title": "Claude Code is way more than coding, so why not try a different UX?",
+    "content": "\\[UPDATE\\] I just added the 7-day trial, as suggested\n\n\\-------  \n  \nI'm a software engineer with 20+ years of experience, leading tech teams, startups, all that, so coding is not a problem. I'm also an entrepreneur, so there are many other tasks that are not coding. And Claude Code really blew my mind when I connected these 2 worlds, last year.\n\nI tested Opcode, among other tools, but they seemed to me more of the same. I started wanting a way to visualize Claude Code projects, sessions, changes, and after a while, I realized that the key limitation was the UX. Not everything should be managed in a Terminal.\n\nThat's why I've decided to put some energy into that, and I'm happy to present \"Atelier, for Claude Code\".\n\nIt is not another integration. It's a complete creative platform on top of Claude Code, for creative professionals. Your entire creative workflow, in one workspace.\n\nResearch, writing, image generation, and content planning \u2014 all embedded, all sharing context, and in a nice UI.\n\nI integrated with Google Gemini (for image generation with Nano Banana), so we have an Image Studio inside the tool, and also DataForSEO, to provide market data. All that, combined with more than 20 curated skills and 30+ templates.\n\nIt would be great to get feedback about that, as I'm still unsure if only power-users will like this kind of tool, and maybe \"normal users\" would prefer 1 web app with everything together (instead of bringing their own AI).\n\nYou're all more than welcome to try and give feedback: [https://getatelier.app/](https://getatelier.app/)",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8df5j/claude_code_is_way_more_than_coding_so_why_not/",
+    "author": "u/Initial_Jury7138",
+    "score": 107,
+    "date": "2026-01-09",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 74
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.591363",
+    "rejected_at": "2026-01-11T09:27:12.740164",
+    "rejection_reason": "Product announcement"
   }
 ]
