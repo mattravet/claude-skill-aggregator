@@ -67,5 +67,28 @@
     "added_at": "2026-01-10T19:48:17.572038",
     "rejected_at": "2026-01-11T09:27:09.874169",
     "rejection_reason": "Discussion post"
+  },
+  {
+    "id": "f72877c727f2",
+    "title": "\u201cBonus\u201d should be the new default",
+    "content": "Look, for $200/month - getting hit with hourly based caps and then being asked to spend more money by allowing \u201cextra usage\u201d \u2014 it is terrible from a consumer experience. \n\nThe week-long bonus was what I would consider fair for weekly/hourly usage and should become the new Claude Code/Claude standard, and I hope Anthropic considers this.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q4uzqc/bonus_should_be_the_new_default/",
+    "author": "u/calegendre",
+    "score": 45,
+    "date": "2026-01-05",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 21
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.572522",
+    "rejected_at": "2026-01-11T09:27:10.232654",
+    "rejection_reason": "Feedback post, not a tip"
   }
 ]

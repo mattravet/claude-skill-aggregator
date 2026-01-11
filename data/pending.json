@@ -1,26 +1,5 @@
 [
   {
-    "id": "f72877c727f2",
-    "title": "\u201cBonus\u201d should be the new default",
-    "content": "Look, for $200/month - getting hit with hourly based caps and then being asked to spend more money by allowing \u201cextra usage\u201d \u2014 it is terrible from a consumer experience. \n\nThe week-long bonus was what I would consider fair for weekly/hourly usage and should become the new Claude Code/Claude standard, and I hope Anthropic considers this.",
-    "source": "reddit",
-    "url": "https://reddit.com/r/Anthropic/comments/1q4uzqc/bonus_should_be_the_new_default/",
-    "author": "u/calegendre",
-    "score": 45,
-    "date": "2026-01-05",
-    "category": "prompt-pattern",
-    "metadata": {
-      "subreddit": "r/Anthropic",
-      "num_comments": 21
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.572522"
-  },
-  {
     "id": "c3d5b021ed16",
     "title": "Any alternatives to Cursor Ultra?",
     "content": "Hi guys,\n\nBeen using Ultra for maybe 4-5 months now, this is my usage which I max every month and usually go over a little with set costs. \n\nMainly using Claude 4.5 Opus just due to accuracy, plus larger code base. \n\nI do use Anti Gravity a little on Pro but it's not quite as good just due to the context that Cursor seems to understand the codebase better. But that gets me through with some Opus. \n\nI'm enjoying Gemini Flash alot as well especially on cost side.\n\nBut not sure if it's worth it to go to Claude Code or anyone else going to work out cheaper? Anti gravity seems to be very good value right now but there just about to change the pro plan with weekly limits, I could invest more time to get context better. \n\nAnyone have any recommendations?",
