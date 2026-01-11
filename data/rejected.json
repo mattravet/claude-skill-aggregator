@@ -257,5 +257,30 @@
     "added_at": "2026-01-10T19:48:17.576970",
     "rejected_at": "2026-01-11T09:27:13.232215",
     "rejection_reason": "Product announcement"
+  },
+  {
+    "id": "e62a5ff084fb",
+    "title": "Anthropic just released Claude Code 2.1.3, full details below",
+    "content": "**Claude Code 2.1.3 flag changes:** **4 flag** and **4 prompt* changes, **13 CLI** changelog, full details below.\n\n**Added:**\n\n\u2022 tengu_scratch\n\u2022 tengu_session_index\n\n**Removed:**\n\n\u2022 persimmon_marble_flag\n\u2022 strawberry_granite_flag\n\nDiff- \ud83d\udd17: https://github.com/marckrenn/claude-code-changelog/compare/v2.1.2...v2.1.3\n\n**Claude Code 2.1.3 prompt changes(4):**\n\n\u2022 **AskUserQuestion adds optional metadata.source field** Claude can now attach optional AskUserQuestion metadata (like metadata.source=\"remember\") for analytics tracking. This extra context is explicitly not shown to the user, enabling provenance/telemetry without changing the visible question UI.\n\n\u2022 **Bash `description` rules expanded; avoid \u201ccomplex\u201d/\u201crisk\u201d** Claude\u2019s Bash tool-call `description` is now more strictly shaped: keep standard commands brief (5\u201310 words), add context for pipes/obscure flags, and never use terms like \u201ccomplex\u201d or \u201crisk\u201d\u2014only describe the action. Examples were expanded accordingly.\n\n\u2022 **Git status: never use -uall in commit/PR flows** Claude\u2019s git workflow guidance now bans `git status -uall` when preparing commits or pull requests, noting it can cause memory issues on large repos. Status checks should use safer defaults while still enumerating repo state.\n\n\u2022 **Bash schema adds internal _simulatedSedEdit object** Claude\u2019s Bash tool schema now includes an internal `_simulatedSedEdit` payload (filePath + newContent) meant for passing precomputed sed-edit preview results. This introduces a structured channel for tooling integrations around command-driven edits.\n\n**Images - Prompt changes 1 to 4**\n\n**13 Claude Code CLI 2.1.3 changelogs:**\n\n\u2022 **Merged** slash commands and skills, simplifying the mental model with no change in behavior.\n\n\u2022 Added release channel (`stable` or `latest`) toggle to `/config`\n\n\u2022 Added detection **and** warnings for unreachable permission rules, with warnings in `/doctor` and after saving rules that include the source of each rule and actionable fix guidance.\n\n\u2022 **Fixed** plan files persisting across `/clear` commands, now ensuring a fresh plan file is used after clearing a conversation.\n\n\u2022 Fixed **false skill** duplicate detection on filesystems with large inodes (e.g., ExFAT) by using 64-bit precision for inode values.\n\n\u2022 Fixed **mismatch** between background task count in status bar and items shown in tasks dialog.\n\n\u2022 Fixed **sub-agents** using the wrong model during conversation compaction.\n\n\u2022 Fixed **web search** in sub-agents using incorrect model.\n\n\u2022 Fixed **trust dialog** acceptance when running from the home directory not enabling trust-requiring features like hooks during the session.\n\n\u2022 Improved **terminal rendering** stability by preventing uncontrolled writes from corrupting cursor state.\n\n\u2022 Improved **slash command** suggestion readability by truncating long descriptions to 2 lines.\n\n\u2022 Changed **tool hook** execution timeout from 60 seconds to 10 minutes.\n\n\u2022 [VSCode] Added clickable destination selector for permission requests, allowing you to choose where settings are saved (this project, all projects, shared with team, or session only).\n\n\ud83d\udd17: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md\n\n**Full source: Claude Code log**",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8okkb/anthropic_just_released_claude_code_213_full/",
+    "author": "u/BuildwithVignesh",
+    "score": 168,
+    "date": "2026-01-09",
+    "category": "hook",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 58
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.576466",
+    "rejected_at": "2026-01-11T09:27:13.692200",
+    "rejection_reason": "Changelog summary, not a tip"
   }
 ]
