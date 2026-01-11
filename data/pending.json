@@ -21,27 +21,6 @@
     "added_at": "2026-01-10T19:48:17.569954"
   },
   {
-    "id": "f7b1213d1292",
-    "title": "I turned my old MacBook Air into a 24/7 Claude automation server",
-    "content": "I\u2019ve been down a rabbit hole for the past week and wanted to share what came out of it.\n\nI kept finding myself doing the same Claude Code tasks over and over. Summarize this repo. Check these work items. Post updates. I thought: why am I manually running these?\n\nWhat if I could just\u2026 schedule it? Like cron, but for AI agents. So I build (or better\u2026 let Claude Code build) Claude Runner. It\u2019s basically a scheduling server that:\n\t\u2219\tRuns Claude Code CLI tasks on a schedule (cron expressions)\n\t\u2219\tTriggers prompts from webhooks (so external events can kick off AI workflows)\n\t\u2219\tLets me create new MCP servers on the fly, Idescribe what I want and it writes the Python code\n\t\u2219\tTracks token usage and costs\n\t\u2219\tSends me emails with results\n\nThe nice part? I connected it as an MCP server to my Claude mobile app. So now I can literally have a conversation like \u201ccreate a job that checks HackerNews every morning and emails me the top AI posts\u201d and it just\u2026 does it.\n\n\nSetup (for now) runs on an old MacBook Air sitting in a corner, lid closed, doing actual work for once.\n\t\u2219\tSingle Python file using FastMCP\n\t\u2219\tSQLite for storage\n\t\u2219\tngrok for webhooks and remote access (including oAuth)\n\t\u2219\tClaude Code CLI with the Agentic SDK doing the actual work\n\nThat\u2019s it. No cloud bills. No Kubernetes. Just an old laptop that was collecting dust and now runs my AI automations 24/7.\n\nSome things I\u2019m running\n\t\u2219\tAutomated local news aggregation for my municipality\u2019s Facebook page (twice daily, filters by relevance, posts automatically)\n\t\u2219\tAzure DevOps webhook that triggers Claude to analyze and document any work item tagged \u201cClaude\u201d\n\t\u2219\tDaily digest emails summarizing specific topics\n\nNow an even more fun part is the dynamic-mcp\u2019s. Need to integrate with a new API? Just tell Claude to create an MCP server for it. The server persists, and now all my jobs can use those tools. This is a big change compared to ChatGPT (or other platforms) tasks.\n\nIt\u2019s like giving Claude persistent memory AND the ability to extend its own capabilities.\n\nWhat surprised me\n1. Claude Code\u2019s tool use is SO much more powerful than API calls. It can chain together web searches, file operations, API calls, \u2026 actual agentic behavior.\n2. The MacBook Air handles it fine. It\u2019s not doing heavy compute, just orchestrating Claude API calls. Runs cool and quiet.\n\nWhat\u2019s next\nThinking about packaging this up for others. The architecture could scale to \u201ccentral brain + worker nodes\u201d but honestly, even as a personal tool running on forgotten hardware, it\u2019s been a game changer.\nThat laptop went from \u201cI should probably sell this\u201d to genuinely useful.\n\nAlso thinking about giving the jobs access to create new jobs within themselves\u2026 but maybe too dangerous for now. \ud83d\ude05\n\nWritten with the help of Claude Code off course\u2026",
-    "source": "reddit",
-    "url": "https://reddit.com/r/ClaudeAI/comments/1q8r7u6/i_turned_my_old_macbook_air_into_a_247_claude/",
-    "author": "u/florejaen123",
-    "score": 26,
-    "date": "2026-01-09",
-    "category": "hook",
-    "metadata": {
-      "subreddit": "r/ClaudeAI",
-      "num_comments": 15
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.570894"
-  },
-  {
     "id": "721b285dbcdb",
     "title": "Why did you did this? This is the worst news ever",
     "content": "\" Anthropic changed something last night preventing their Claude Code plans from being used in other clients. Lots of \"buzz\" about this on Twitter etc this morning.\" Matt Rubens, co-founder/CEO of Roo Code\n\nI have always used RooCode and Claude Code was the only provider I used (Max plan). I am not comfortable with the CLI workflow so this is mildly stressing me out.",
