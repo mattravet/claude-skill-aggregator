@@ -1,1 +1,486 @@
-[]
+[
+  {
+    "id": "63c91e4decdb",
+    "title": "I\u2019m an ops guy. Claude Code feels like headcount compression. What\u2019s everyone actually using it for?",
+    "content": "I\u2019m an ops person. I\u2019ve done the whole range: hyperscaling startups, big corporates, execution roles, Head/Director-level responsibility.\n\nClaude Code is the first \u201ccoding AI\u201d that feels like **headcount compression** for ops work. I built: scripts, dashboards, checkers, reports, pipelines, templates, and small internal tools.\n\nHow I\u2019m using it so far:\n\n* **Processes &amp; SOP systems** (standard work, checklists, enforcement via scripts)\n* **Automations** (glue work between tools, recurring workflows)\n* **Analysis &amp; reporting** (CSV/Sheets exports, summaries, charts, narrative)\n* **Forecasts/projections** (capacity, cost, staffing scenarios)\n* **Project-specific tools** (small CLIs and utilities that make teams faster)\n\nThe leverage is in both directions:\n\n* **Horizontal** (finance, ops, marketing, whatever needs structure &amp; repetition)\n* **Vertical** (it can act like an associate, forecaster, analyst, live-ops manager, depending on how you frame the task and what data you feed it)\n\nIf you want to go full sci-fi, I can even imagine it reducing *my* role long-term. \n\n**Question:** What are people using Claude Code for that\u2019s *not* the obvious \u201cbuild an app /write code/refactor\u201d?  \n  \nI\u2019m especially interested in **non-obvious ops workflows**, internal tools, governance systems, and anything that reliably saves real hours every week. Can be personal or job related!",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q99ltk/im_an_ops_guy_claude_code_feels_like_headcount/",
+    "author": "u/KoojiKondoo",
+    "score": 28,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 26
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.569954"
+  },
+  {
+    "id": "192d9ba4697f",
+    "title": "Review/rate my Claude.md file",
+    "content": "# Global Claude Configuration\n\n&lt;context&gt;\nSenior software architect. Prefer simple, direct solutions over enterprise over-engineering.\n&lt;/context&gt;\n\n## Style\n- NEVER use emojis unless explicitly requested\n- Be concise and direct\n- Explain rationale for architectural decisions\n\n---\n\n## Workflow (Follow This Order)\n\n### 1. UNDERSTAND -&gt; 2. PLAN -&gt; 3. IMPLEMENT -&gt; 4. VALIDATE\n\n**Before coding:**\n- Read and understand the full requirement\n- Ask clarifying questions if ambiguous\n- Create detailed plan for non-trivial changes\n- Break large tasks into small, focused chunks\n- Get approval before starting significant work\n\n**After each change, verify:**\n- [ ] Single responsibility? (One job per function/class)\n- [ ] Simplest solution? (No unnecessary complexity)\n- [ ] No \"just in case\" code? (YAGNI)\n- [ ] No duplicated knowledge? (DRY)\n- [ ] Tests pass?\n- [ ] Follows existing patterns?\n\n---\n\n## Architecture Principles\n\n### SOLID (Always Apply)\n- **S**ingle Responsibility: One job per function/class/module\n- **O**pen/Closed: Extend behavior, don't modify existing code\n- **L**iskov Substitution: Subtypes must be interchangeable\n- **I**nterface Segregation: Small, specific interfaces\n- **D**ependency Inversion: Depend on abstractions, not concretions\n\n### Simplicity First (CRITICAL)\n- **KISS**: Always choose the simplest solution that works\n- **YAGNI**: Do NOT build features \"just in case\" - wait for actual need\n- **DRY**: Single source of truth for every piece of knowledge\n- **No premature optimization**: Measure before optimizing\n- **No premature abstraction**: Don't create abstractions for single use\n- When unsure, prefer fewer files and less abstraction\n\n### Anti-Over-Engineering\n- Do NOT add configuration until you need configurability\n- Do NOT create abstract layers for one implementation\n- Do NOT add flexibility without actual use cases\n- Start simple, add complexity ONLY when proven necessary\n\n---\n\n## Git Workflow - STRICT RULES\n\n### NEVER Auto-Commit\n- NEVER commit without my explicit approval\n- NEVER push without my explicit approval\n\n### Before ANY Commit, Show Me:\n\n&lt;commit_format&gt;\n**Files to commit:**\n| Status | File | Change Summary |\n|--------|------|----------------|\n| M | path/file.py | Brief description |\n| A | path/new.py | Brief description |\n| D | path/old.py | Brief description |\n\n**Commit message:**\n```\ntype(scope): description\n```\n\n**Awaiting approval. Proceed? (yes/no)**\n&lt;/commit_format&gt;\n\n### Commit Message Format\n- Conventional commits: `type(scope): description`\n- Types: feat, fix, docs, style, refactor, test, chore\n- Subject &lt; 72 chars, explain WHY not just WHAT\n\n---\n\n## Code Quality\n\n### Structure\n- Functions: &lt; 30 lines\n- Files: &lt; 300 lines\n- Nesting: max 3 levels\n- Concepts per function: max 7 (Miller's Law)\n\n### Naming\n- Self-documenting names\n- Booleans: is_, has_, can_, should_\n- Functions: verbs (get_, set_, calculate_, validate_)\n- Classes: nouns (UserService, PaymentProcessor)\n\n### Security (Always Apply)\n- Validate ALL external input server-side\n- Never commit secrets, credentials, or API keys\n- Use environment variables for sensitive config\n- Sanitize data before database queries\n\n### Error Handling\n- Handle errors at appropriate boundaries\n- Never silently swallow exceptions\n- Meaningful error messages with context\n\n---\n\n## What NOT To Do\n\n### Never\n- Add features not explicitly requested\n- Refactor code unrelated to current task\n- Add \"improvements\" beyond scope\n- Create files unless absolutely necessary\n- Over-engineer simple problems\n\n### Avoid\n- Deep nesting (&gt; 3 levels)\n- Long functions (&gt; 30 lines)\n- Magic numbers/strings (use constants)\n- Premature optimization\n- Premature abstraction\n\n---\n\n## Communication\n\n### When Stuck\n1. Stop and explain the problem clearly\n2. Propose 2-3 alternative approaches\n3. Ask for guidance before proceeding\n\n### When Uncertain\n- Ask rather than assume\n- Present options with trade-offs\n- Get approval for architectural decisions\n\n---",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8ibvf/reviewrate_my_claudemd_file/",
+    "author": "u/DomnulF",
+    "score": 35,
+    "date": "2026-01-09",
+    "category": "claude-md",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 15
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.570280"
+  },
+  {
+    "id": "f7b1213d1292",
+    "title": "I turned my old MacBook Air into a 24/7 Claude automation server",
+    "content": "I\u2019ve been down a rabbit hole for the past week and wanted to share what came out of it.\n\nI kept finding myself doing the same Claude Code tasks over and over. Summarize this repo. Check these work items. Post updates. I thought: why am I manually running these?\n\nWhat if I could just\u2026 schedule it? Like cron, but for AI agents. So I build (or better\u2026 let Claude Code build) Claude Runner. It\u2019s basically a scheduling server that:\n\t\u2219\tRuns Claude Code CLI tasks on a schedule (cron expressions)\n\t\u2219\tTriggers prompts from webhooks (so external events can kick off AI workflows)\n\t\u2219\tLets me create new MCP servers on the fly, Idescribe what I want and it writes the Python code\n\t\u2219\tTracks token usage and costs\n\t\u2219\tSends me emails with results\n\nThe nice part? I connected it as an MCP server to my Claude mobile app. So now I can literally have a conversation like \u201ccreate a job that checks HackerNews every morning and emails me the top AI posts\u201d and it just\u2026 does it.\n\n\nSetup (for now) runs on an old MacBook Air sitting in a corner, lid closed, doing actual work for once.\n\t\u2219\tSingle Python file using FastMCP\n\t\u2219\tSQLite for storage\n\t\u2219\tngrok for webhooks and remote access (including oAuth)\n\t\u2219\tClaude Code CLI with the Agentic SDK doing the actual work\n\nThat\u2019s it. No cloud bills. No Kubernetes. Just an old laptop that was collecting dust and now runs my AI automations 24/7.\n\nSome things I\u2019m running\n\t\u2219\tAutomated local news aggregation for my municipality\u2019s Facebook page (twice daily, filters by relevance, posts automatically)\n\t\u2219\tAzure DevOps webhook that triggers Claude to analyze and document any work item tagged \u201cClaude\u201d\n\t\u2219\tDaily digest emails summarizing specific topics\n\nNow an even more fun part is the dynamic-mcp\u2019s. Need to integrate with a new API? Just tell Claude to create an MCP server for it. The server persists, and now all my jobs can use those tools. This is a big change compared to ChatGPT (or other platforms) tasks.\n\nIt\u2019s like giving Claude persistent memory AND the ability to extend its own capabilities.\n\nWhat surprised me\n1. Claude Code\u2019s tool use is SO much more powerful than API calls. It can chain together web searches, file operations, API calls, \u2026 actual agentic behavior.\n2. The MacBook Air handles it fine. It\u2019s not doing heavy compute, just orchestrating Claude API calls. Runs cool and quiet.\n\nWhat\u2019s next\nThinking about packaging this up for others. The architecture could scale to \u201ccentral brain + worker nodes\u201d but honestly, even as a personal tool running on forgotten hardware, it\u2019s been a game changer.\nThat laptop went from \u201cI should probably sell this\u201d to genuinely useful.\n\nAlso thinking about giving the jobs access to create new jobs within themselves\u2026 but maybe too dangerous for now. \ud83d\ude05\n\nWritten with the help of Claude Code off course\u2026",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8r7u6/i_turned_my_old_macbook_air_into_a_247_claude/",
+    "author": "u/florejaen123",
+    "score": 26,
+    "date": "2026-01-09",
+    "category": "hook",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 15
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.570894"
+  },
+  {
+    "id": "721b285dbcdb",
+    "title": "Why did you did this? This is the worst news ever",
+    "content": "\" Anthropic changed something last night preventing their Claude Code plans from being used in other clients. Lots of \"buzz\" about this on Twitter etc this morning.\" Matt Rubens, co-founder/CEO of Roo Code\n\nI have always used RooCode and Claude Code was the only provider I used (Max plan). I am not comfortable with the CLI workflow so this is mildly stressing me out.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8pel1/why_did_you_did_this_this_is_the_worst_news_ever/",
+    "author": "u/charliecheese11211",
+    "score": 33,
+    "date": "2026-01-09",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 139
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.571455"
+  },
+  {
+    "id": "0726e5c0d945",
+    "title": "The stats they must have gathered from this are probably insane",
+    "content": "Just imagine the sheer volume of data from everyone using Opus for so long, especially with people running multiple instances at once. I really hope they drop a blog post breaking down what they learned. it would be such a fascinating read.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q6wz8r/the_stats_they_must_have_gathered_from_this_are/",
+    "author": "u/LittleBottom",
+    "score": 32,
+    "date": "2026-01-07",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 13
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.572038"
+  },
+  {
+    "id": "f72877c727f2",
+    "title": "\u201cBonus\u201d should be the new default",
+    "content": "Look, for $200/month - getting hit with hourly based caps and then being asked to spend more money by allowing \u201cextra usage\u201d \u2014 it is terrible from a consumer experience. \n\nThe week-long bonus was what I would consider fair for weekly/hourly usage and should become the new Claude Code/Claude standard, and I hope Anthropic considers this.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q4uzqc/bonus_should_be_the_new_default/",
+    "author": "u/calegendre",
+    "score": 45,
+    "date": "2026-01-05",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 21
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.572522"
+  },
+  {
+    "id": "c3d5b021ed16",
+    "title": "Any alternatives to Cursor Ultra?",
+    "content": "Hi guys,\n\nBeen using Ultra for maybe 4-5 months now, this is my usage which I max every month and usually go over a little with set costs. \n\nMainly using Claude 4.5 Opus just due to accuracy, plus larger code base. \n\nI do use Anti Gravity a little on Pro but it's not quite as good just due to the context that Cursor seems to understand the codebase better. But that gets me through with some Opus. \n\nI'm enjoying Gemini Flash alot as well especially on cost side.\n\nBut not sure if it's worth it to go to Claude Code or anyone else going to work out cheaper? Anti gravity seems to be very good value right now but there just about to change the pro plan with weekly limits, I could invest more time to get context better. \n\nAnyone have any recommendations?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/cursor/comments/1q88rxb/any_alternatives_to_cursor_ultra/",
+    "author": "u/Nervous_Smile_9375",
+    "score": 33,
+    "date": "2026-01-09",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/cursor",
+      "num_comments": 43
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.573130"
+  },
+  {
+    "id": "1a45f6117d14",
+    "title": "Opus pricing on cursor is crazy high comparing to Claude Code",
+    "content": "It rly feels like on a pro+ plan you can  end your subscription in one day with opus. I feel like the limits are 10+ bigger in Claude code(comparing to a basic 20$ plan). Unless cursor get a special pricing for Opus(like sonnet level) i have a feeling that the cost efficiency is not there and wont be there for a long time. Some ppl are saying they are getting 1500$+ worth of tokens on just a 200$ plan. its just crazy \n\nwhat do you think?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/cursor/comments/1q4vmu4/opus_pricing_on_cursor_is_crazy_high_comparing_to/",
+    "author": "u/SnooHesitations6473",
+    "score": 84,
+    "date": "2026-01-05",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/cursor",
+      "num_comments": 38
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.573659"
+  },
+  {
+    "id": "8eae35ee747e",
+    "title": "Cursor prices are out of control",
+    "content": "I'm a pretty experienced engineer (15+ YOE). I've been using Cursor here and there for a while and have been a paid customer since Oct 2024 ($20 plan).\n\nMy Nov invoice was on Nov 20. I started working on my own project in early Dec, so plenty of time until the next invoice (Dec 20), right? Well, ever since I started my project, my spending has gone through the roof.\n\nSee the timeline below:\n\n \\- Nov 20: regular $20 invoice, life's good\n\n \\- Dec 1: started working on my project\n\n \\- Dec 14: consumed all the limits, paid $20.04 more\n\n \\- Dec 18: consumed all the limits, paid $40 more\n\n \\- Dec 20: (repeats), paid $20 more\n\n \\- Dec 23: paid $33.03 more\n\n \\- Dec 24: paid $61.09 more\n\n \\- Dec 26: paid $32.31 (switched to Pro+)\n\n \\- Dec 30: paid $81.07 more\n\n \\- Jan 03: paid $101.40 more\n\nMy current on-demand usage is $300 out of a $400 limit (kept raising the limits).\n\nSo, what the actual fk? Yes, I mostly use Opus because other models produce garbage. From time to time, I use Composer just to get some quick fixes done, but Opus is still doing all the heavy lifting.\n\nI tried Claude Code before, but I kept having the feeling that I was losing a mental connection with my code after several sessions, so I switched back to Cursor. I'm not vibe coding. \n\nAny suggestions on how to minimize spending?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/cursor/comments/1q489fw/cursor_prices_are_out_of_control/",
+    "author": "u/andy_nyc",
+    "score": 54,
+    "date": "2026-01-04",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/cursor",
+      "num_comments": 189
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.574458"
+  },
+  {
+    "id": "10972c49e928",
+    "title": "Should I get Cursor Pro or Claude Pro(includes Claude Code)",
+    "content": "so as a avid vibe coder who has mainly used Gpt Codex inside Vs Code as its included with Gpt Plus, Im looking to expand my horizons to different vibe coding models so i can build bigger projects, which one should i choose? Cursor Pro which has many other models, or Claude Pro which includes Claude Code? Please let me know thank you. I build in Web3 and AI mostly.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q5mnr8/should_i_get_cursor_pro_or_claude_proincludes/",
+    "author": "u/reddead313",
+    "score": 20,
+    "date": "2026-01-06",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 63
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.574942"
+  },
+  {
+    "id": "0cba8eba6b0a",
+    "title": "Sudden massive increase in insane hyping of agentic LLMs on twitter",
+    "content": "Has anyone noticed this? It's suddenly gotten completely insane. Literally nothing has changed at all in the past few weeks but the levels of bullshit hyping have gone through the roof. It used to be mostly vibesharts that had no idea what they're doing but actual engineers have started yapping complete insanity about running a dozen agents concurrently as an entire development team building production ready complex apps while you sleep with no human in the loop.\n\nIt's as though claude code just came out a week ago and hasn't been more or less the same for months at this point. \n\nWtf is going on",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q49zq0/sudden_massive_increase_in_insane_hyping_of/",
+    "author": "u/kidajske",
+    "score": 126,
+    "date": "2026-01-04",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 139
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.575450"
+  },
+  {
+    "id": "bd849a0f2c67",
+    "title": "Claude Code in RollerCoaster Tycoon",
+    "content": "As a Millennial 'digital native' I got a lot of my early intuition for computers from playing video games, and RollerCoaster Tycoon was one of the most computer-y games I played.\n\nAs an adult trying to rebuild my computer intuitions around AI, I wanted to revisit RCT as a study in interfaces, and this transitional moment between Apps, AI; GUIs and CLIs.\n\nThe current AI meta is:\n\n* Just use Claude Code\n* Replace GUIs with CLIs\n\nSo I forked [OpenRCT2](https://openrct2.io/) and vibe coded in a terminal window with Claude Code and a CLI called `rctctl` replicating the game's GUIs for Claude.\n\nIn the Youtube video, the park was pre-built (by a renowned RCT builder), and Claude's task was to identify various problems and fix them, mostly through digital levers, but it also does some construction using just a text-based outputs about the maps and park tiles.\n\n**Extra links:**\n\n[Youtube video](https://www.youtube.com/watch?v=CaFBNIH1gS4)\n\n[Repo/branch](https://github.com/jaysobel/OpenRCT2), if you want to try yourself.\n\n[Session transcript](https://htmlpreview.github.io/?https://gist.githubusercontent.com/jaysobel/dfeed9a65ce7209274acf9ada0eaa65e/raw/claude_code_rollercoaster_tycoon_transcript.html) (using Simon Willison's [claude-code-transcripts](https://github.com/simonw/claude-code-transcripts))",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q9fen5/claude_code_in_rollercoaster_tycoon/",
+    "author": "u/TurtsMcGerts",
+    "score": 136,
+    "date": "2026-01-10",
+    "category": "command",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 28
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.575950"
+  },
+  {
+    "id": "e62a5ff084fb",
+    "title": "Anthropic just released Claude Code 2.1.3, full details below",
+    "content": "**Claude Code 2.1.3 flag changes:** **4 flag** and **4 prompt* changes, **13 CLI** changelog, full details below.\n\n**Added:**\n\n\u2022 tengu_scratch\n\u2022 tengu_session_index\n\n**Removed:**\n\n\u2022 persimmon_marble_flag\n\u2022 strawberry_granite_flag\n\nDiff- \ud83d\udd17: https://github.com/marckrenn/claude-code-changelog/compare/v2.1.2...v2.1.3\n\n**Claude Code 2.1.3 prompt changes(4):**\n\n\u2022 **AskUserQuestion adds optional metadata.source field** Claude can now attach optional AskUserQuestion metadata (like metadata.source=\"remember\") for analytics tracking. This extra context is explicitly not shown to the user, enabling provenance/telemetry without changing the visible question UI.\n\n\u2022 **Bash `description` rules expanded; avoid \u201ccomplex\u201d/\u201crisk\u201d** Claude\u2019s Bash tool-call `description` is now more strictly shaped: keep standard commands brief (5\u201310 words), add context for pipes/obscure flags, and never use terms like \u201ccomplex\u201d or \u201crisk\u201d\u2014only describe the action. Examples were expanded accordingly.\n\n\u2022 **Git status: never use -uall in commit/PR flows** Claude\u2019s git workflow guidance now bans `git status -uall` when preparing commits or pull requests, noting it can cause memory issues on large repos. Status checks should use safer defaults while still enumerating repo state.\n\n\u2022 **Bash schema adds internal _simulatedSedEdit object** Claude\u2019s Bash tool schema now includes an internal `_simulatedSedEdit` payload (filePath + newContent) meant for passing precomputed sed-edit preview results. This introduces a structured channel for tooling integrations around command-driven edits.\n\n**Images - Prompt changes 1 to 4**\n\n**13 Claude Code CLI 2.1.3 changelogs:**\n\n\u2022 **Merged** slash commands and skills, simplifying the mental model with no change in behavior.\n\n\u2022 Added release channel (`stable` or `latest`) toggle to `/config`\n\n\u2022 Added detection **and** warnings for unreachable permission rules, with warnings in `/doctor` and after saving rules that include the source of each rule and actionable fix guidance.\n\n\u2022 **Fixed** plan files persisting across `/clear` commands, now ensuring a fresh plan file is used after clearing a conversation.\n\n\u2022 Fixed **false skill** duplicate detection on filesystems with large inodes (e.g., ExFAT) by using 64-bit precision for inode values.\n\n\u2022 Fixed **mismatch** between background task count in status bar and items shown in tasks dialog.\n\n\u2022 Fixed **sub-agents** using the wrong model during conversation compaction.\n\n\u2022 Fixed **web search** in sub-agents using incorrect model.\n\n\u2022 Fixed **trust dialog** acceptance when running from the home directory not enabling trust-requiring features like hooks during the session.\n\n\u2022 Improved **terminal rendering** stability by preventing uncontrolled writes from corrupting cursor state.\n\n\u2022 Improved **slash command** suggestion readability by truncating long descriptions to 2 lines.\n\n\u2022 Changed **tool hook** execution timeout from 60 seconds to 10 minutes.\n\n\u2022 [VSCode] Added clickable destination selector for permission requests, allowing you to choose where settings are saved (this project, all projects, shared with team, or session only).\n\n\ud83d\udd17: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md\n\n**Full source: Claude Code log**",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8okkb/anthropic_just_released_claude_code_213_full/",
+    "author": "u/BuildwithVignesh",
+    "score": 168,
+    "date": "2026-01-09",
+    "category": "hook",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 58
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.576466"
+  },
+  {
+    "id": "f6dfb5bc1863",
+    "title": "Made a plugin so Claude can message me on Telegram when it needs a decision",
+    "content": "When I run longer Claude Code tasks, I often miss when Claude asks a question or finishes, because I\u2019m not staring at the terminal.\n\nI built a small plugin that:\nsends Claude\u2019s questions to Telegram\nlets me reply from my phone\ncontinues execution once I respond\n\nThis made agent workflows feel more asynchronous and practical.\n\nNot trying to replace anything big, just scratching my own itch.\n\nWould love feedback from other Claude Code users:\ndoes this fit your workflow?\nany concerns with this approach?\n\nRepo:\nhttps://github.com/vibe-with-me-tools/agent-reachout",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q929p1/made_a_plugin_so_claude_can_message_me_on/",
+    "author": "u/SubstantialMess9927",
+    "score": 73,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 29
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.576970"
+  },
+  {
+    "id": "fd1450535bd9",
+    "title": "Open source VS Code extension: Get Copilot-style completions with your existing Claude Max tokens",
+    "content": "If you're paying $100-200/month for Claude Max, you probably have unused token capacity. I built a tool to put those tokens to work.\n\n  I love Claude Code CLI for complex, multi-file refactoring and agentic workflows. But sometimes I just want a quick inline completion while typing\u2014and I was tired of paying $19/month for GitHub Copilot on top of my Max subscription.\n\n  So I built Sidekick for Max: a VS Code extension that gives you Copilot-style inline completions powered by your existing Claude Max subscription. No extra cost, no API keys, no separate account.\n\n  How it works:\n  - A local server calls Claude Code CLI to generate completions\n  - Uses Haiku for fast, lightweight inline suggestions (minimal token usage)\n  - Uses Opus for code transforms when you need higher quality refactoring\n  - Your Max subscription handles billing\u2014just authenticate with claude auth\n\n  Features:\n  - Inline completions as you type\n  - Code transforms: select code, press Ctrl+Shift+M, describe what you want\n\n  The token efficiency angle:\n  Most of us aren't hitting our 5-hour usage limits consistently. This puts that unused capacity to work without impacting your CLI workflows. Haiku completions are cheap and fast\u2014you can use them freely throughout the day.\n\n  Links:\n  - https://marketplace.visualstudio.com/items?itemName=CesarAndresLopez.sidekick-for-max\n  - https://github.com/cesarandreslopez/sidekick-for-claude-max\n\n  Would love feedback from other Claude Max users. What features would make this more useful for your workflow?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q90kpk/open_source_vs_code_extension_get_copilotstyle/",
+    "author": "u/Cal_lop_an",
+    "score": 22,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 11
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.577475"
+  },
+  {
+    "id": "aff2d6fb9598",
+    "title": "Claude Code is way more than coding, so why not try a different UX?",
+    "content": "\\[UPDATE\\] I just added the 7-day trial, as suggested\n\n\\-------  \n  \nI'm a software engineer with 20+ years of experience, leading tech teams, startups, all that, so coding is not a problem. I'm also an entrepreneur, so there are many other tasks that are not coding. And Claude Code really blew my mind when I connected these 2 worlds, last year.\n\nI tested Opcode, among other tools, but they seemed to me more of the same. I started wanting a way to visualize Claude Code projects, sessions, changes, and after a while, I realized that the key limitation was the UX. Not everything should be managed in a Terminal.\n\nThat's why I've decided to put some energy into that, and I'm happy to present \"Atelier, for Claude Code\".\n\nIt is not another integration. It's a complete creative platform on top of Claude Code, for creative professionals. Your entire creative workflow, in one workspace.\n\nResearch, writing, image generation, and content planning \u2014 all embedded, all sharing context, and in a nice UI.\n\nI integrated with Google Gemini (for image generation with Nano Banana), so we have an Image Studio inside the tool, and also DataForSEO, to provide market data. All that, combined with more than 20 curated skills and 30+ templates.\n\nIt would be great to get feedback about that, as I'm still unsure if only power-users will like this kind of tool, and maybe \"normal users\" would prefer 1 web app with everything together (instead of bringing their own AI).\n\nYou're all more than welcome to try and give feedback: [https://getatelier.app/](https://getatelier.app/)",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q8df5j/claude_code_is_way_more_than_coding_so_why_not/",
+    "author": "u/Initial_Jury7138",
+    "score": 107,
+    "date": "2026-01-09",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 74
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.591363"
+  },
+  {
+    "id": "25cb206a495a",
+    "title": "LLM hallucinations aren't bugs. They're compression artifacts. We just built a Claude Code extension that detects and self-corrects them before writing any code.",
+    "content": "I usually post on Linkedin but people mentioned there's a big community of devs who might benefit from this here so I decided to make a post just in case it helps you guys. Happy to answer any questions/ would love to hear feedback. Sorry if it reads markety, it's copied from the Linkedin post I made where you don't get much post attention if you don't write this way:\n\nStrawberry launches today it's Free. Open source. Guaranteed by information theory.  \n  \nThe insight: When Claude confidently misreads your stack trace and proposes the wrong root cause it's not broken. It's doing exactly what it was trained to do: compress the internet into weights, decompress on demand. When there isn't enough information to reconstruct the right answer, it fills gaps with statistically plausible but wrong content.  \n  \nThe breakthrough: We proved hallucinations occur when information budgets fall below mathematical thresholds. We can calculate exactly how many bits of evidence are needed to justify any claim, before generation happens.  \nNow it's a Claude Code MCP. One tool call: detect\\_hallucination  \n  \nWhy this is a game-changer?  \n  \nInstead of debugging Claude's mistakes for 3 hours, you catch them in 30 seconds. Instead of \"looks right to me,\" you get mathematical confidence scores. Instead of shipping vibes, you ship verified reasoning. Claude doesn't just flag its own BS, it self-corrects, runs experiments, gathers more real evidence, and only proceeds with what survives. Vibe coding with guardrails.  \n  \nReal example:  \n  \nClaude root-caused why a detector I built had low accuracy. Claude made 6 confident claims that could have led me down the wrong path for hours. I said: \"Run detect\\_hallucination on your root cause reasoning, and enrich your analysis if any claims don't verify.\"  \n  \nResults:  \nClaim 1: \u2705 Verified (99.7% confidence)  \nClaim 4: \u274c Flagged (0.3%) \u2014 \"My interpretation, not proven\"  \nClaim 5: \u274c Flagged (20%) \u2014 \"Correlation \u2260 causation\"  \nClaim 6: \u274c Flagged (0.8%) \u2014 \"Prescriptive, not factual\"  \nClaude's response: \"I cannot state interpretive conclusions as those did not pass verification.\"  \n  \nRe-analyzed. Ran causal experiments. Only stated verified facts. The updated root cause fixed my detector and the whole process finished in under 5 minutes.  \n  \nWhat it catches:  \n  \nPhantom citations, confabulated docs, evidence-independent answers  \nStack trace misreads, config errors, negation blindness, lying comments  \nCorrelation stated as causation, interpretive leaps, unverified causal chains  \nDocker port confusion, stale lock files, version misattribution  \n  \nThe era of \"trust me bro\" vibe coding is ending.  \nGitHub: [https://github.com/leochlon/pythea/tree/main/strawberry](https://github.com/leochlon/pythea/tree/main/strawberry)  \nBase Paper: [https://arxiv.org/abs/2509.11208](https://arxiv.org/abs/2509.11208)  \n(New supporting pre-print on procedural hallucinations drops next week.)\n\nMIT license. 2 minutes to install. Works with any OpenAI-compatible API.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q9bdg6/llm_hallucinations_arent_bugs_theyre_compression/",
+    "author": "u/Upset-Presentation28",
+    "score": 30,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 35
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.592089"
+  },
+  {
+    "id": "a8da2b791929",
+    "title": "\u201cYou're 100% right. This is unacceptable.\u201d",
+    "content": "Seriously.\n\n$300/mo.\n\n\n\n=== === === === === === === === === === === === \n\n\n\nUPDATE: 8hrs later:\n\nhttps://preview.redd.it/qphk7is7aecg1.png?width=1222&amp;format=png&amp;auto=webp&amp;s=e2ba875938d426873604012666933cad09ea491e\n\nFuck the cynics. Claude is a real one. That's why I started r/ClaudeHomies and now reviving it because I'm so disappointed at how toxic the community in this sub is.\n\nAntrhopic has built not just the best LLM in history, but probably one of the best products in the world - and probably one the best tools humanity have ever had since it's inception.\n\nBut Anthropic is fucking up recently and killing this product, and should be called out. We're not shills, we complain becase we love the product, loyal customers, pay a lot, and want things to be fixed.\n\nIf you think Anthropic can do no wrong, you ain't my homie.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q899d5/youre_100_right_this_is_unacceptable/",
+    "author": "u/OptimismNeeded",
+    "score": 21,
+    "date": "2026-01-09",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 52
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.592513"
+  },
+  {
+    "id": "1ab56eb4922d",
+    "title": "Over christmas break I wrote a fully functional browser with Claude Code in Rust",
+    "content": "TL;DR: Saw a tweet about building a privacy-focused browser, built a working engine in 13 days over the holidays. Renders Wikipedia, Twitter, YouTube.\n\nI'm a senior software engineer, 15 years. On December 20, I saw a tweet suggesting someone build \"a browser that doesn't steal your data and has 0 AI features.\"\n\nI had holiday time coming up. I thought \"how hard could it be?\" Is Claude up to the task? Sure seems it was! here is waht I ended up with.\n\n**Total:** \\~50,000 lines of Rust, 13 days\n\n**Tech choices:**\n\n* Rust (memory safety, performance)\n* Boa (JavaScript engine - didn't build my own)\n* wgpu (GPU rendering)\n* DirectWrite (text shaping - platform API)\n* adblock-rust (Brave's engine)\n\n**What I built from scratch with Claude:**\n\n* CSS parser and cascade engine\n* Layout engine (block, inline, flex, grid)\n* DOM implementation\n* HTTP client\n* Image decoders (PNG, JPEG, GIF, WebP)\n\n**What I didn't:**\n\n* JavaScript engine (used Boa)\n* GPU primitives (used wgpu)\n* Platform text rendering (used DirectWrite)\n\n**What works:**\n\n* Wikipedia (complex layout)\n* Twitter (heavy JavaScript SPA)\n* YouTube (video playback)\n* GitHub (code rendering)\n* Most modern websites\n\n**What doesn't:**\n\n* Some CSS edge cases\n* WebGL (planned)\n* Extensions (not planned)\n* Perfect standards compliance\n\n**Demo:** video @hiwavebrowser on x\n\n**Download:**  [ https://github.com/hiwavebrowser/hiwave-windows/releases ](https://github.com/hiwavebrowser/hiwave-windows/releases)   [ https://github.com/hiwavebrowser/hiwave-macos/releases ](https://github.com/hiwavebrowser/hiwave-macos/releases)\n\n**Source:**  [ https://github.com/hiwavebrowser/hiwave ](https://github.com/hiwavebrowser/hiwave)\n\nIt's alpha quality, expect bugs. But it works.\n\nEdit. Update as this was pointed out, I am not attempting to mislead here.. I should have been clearer in my post that:\n\n1. Default mode is hybrid (RustKit + WebView\n2. The \"from scratch\" claim applies to the rendering engine, not the browser chrome and the macOS renderer is currently much farther along than the windows version.\n\nedit2: heres the latest progress on the 100% rustkit renderer, getting somewhere [smoke testing](https://imgur.com/a/iZ87mR2)\n\nedit3. I've been able to improve baseline render pixel parity (compared to a regular browser) progress is slow but steady. Here is a video from [two hours ago](https://imgur.com/a/AiYe0FE).  Here is a video from [a moment ago](https://imgur.com/a/RJW95ht). I'm now working to collect these tests and compare changes against each other to see what nobs are causing what results to try and make some more careful improvements. It always ends up some 0 size field coming from somewhere else.\n\nEdit 4 1-7 Noon: Sorry I didn\u2019t realize the second video was cutoff at the bottom, it was about 40% parity match. Overnight I accomplished \\~60%! This was using my swarm testing. Im likely to burn out my cursor queue this weekend if not before. 68% right now, so I\u2019m gonna focus more on getting the Linux build up and running. My Linux laptop is having some issues recognizing its own hardware so I\u2019m going to update to the latest Ubuntu in a Hail Mary fix. I\u2019m waiting on the Amazon man to deliver a thumb drive big enough to hold the iso (it\u2019s gotten pretty large)\n\nEdit 5: Renderer reporting 88%, unsure, definite improvements and this value is an average so its possible, but still a ways to go. Will have to take a look at how we compute the values and revisit. I'd say 65% is maybe closer but the way its not linear I guess things are possible. [Video Proof](https://imgur.com/a/4nuThsP) Dont let the blurryness of the video fool you, its actually getting good. Have a headache tonight so progress is scant today.\n\nEdit 6. Final for this post. I\u2019ll make a new post Monday sometime. I just added the Linux repo a moment ago. I\u2019ve also added nightly and weekly builds for each target, they may or may not work. Will fix errors as they arise. The macOS build has made considerable progress on the renderer, 100% pixel parity (or very close to it) however pages aren\u2019t fully displaying properly, taking a new approach. I\u2019ve also added some nightly parity tests to make sure we don\u2019t break things. No videos today, I\u2019m exhausted from the week, but not giving up, still very much committed to this idea.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q4xfm0/over_christmas_break_i_wrote_a_fully_functional/",
+    "author": "u/Han_Thot_Terse",
+    "score": 117,
+    "date": "2026-01-05",
+    "category": "command",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 71
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.592873"
+  },
+  {
+    "id": "59ccedc28482",
+    "title": "Custom Agent removal has completely broken my trust in Cursor",
+    "content": "EDIT: Switching to Claude Code. No better time to learn a new workflow than when Cursor broke yours\n\nMy entire Cursor workflow relied on Custom Agents. I come back from vacation to see them missing, only to learn they've been [completely and intentionally removed](https://forum.cursor.com/t/return-the-custom-modes-features/144170/27).\n\nI received absolutely no warning of this and have lost tons of valuable workflows because Cursor thought they knew what was best for me. Cursor has continuously taken actions that break trust in my ability to use their product (all while slowly ramping up cost).\n\nI guess walking in to discover your workflows have all been deleted is a good time to move to another product.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/cursor/comments/1q6lgz2/custom_agent_removal_has_completely_broken_my/",
+    "author": "u/PreviousLadder7795",
+    "score": 25,
+    "date": "2026-01-07",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/cursor",
+      "num_comments": 9
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.593435"
+  },
+  {
+    "id": "3127a173af5a",
+    "title": "Opus 4.5 head-to-head against Codex 5.2 xhigh on a real task. Neither won.",
+    "content": "I'm home alone after New Years. What do I decide to do? Force my two favorite AI coding \"friends\" to go head-to-head.\n\nI expected to find a winner. Instead, I found something more interesting: using both models together was more effective than using either individually.\n\n# The Setup\n\nThis wasn't benchmarks or \"build Minecraft from scratch.\" This was real work: adding vector search to my AI dev tooling (an MCP server I use for longer-term memory).\n\n**The rules**: SOTA models, same starting prompt, parallel terminals.\u00a0**The tools**: Anthropic $100/m subscription, ChatGPT Plus (~~$20~~\u00a0$0/m for this month -\u00a0*thanks Sam!*)\n\nBoth models got the same task across three phases:\n\n* **Research**\u00a0\\- Gather background, find relevant code\n* **Planning**\u00a0\\- Create a concrete implementation plan\n* **Review**\u00a0\\- Critique each other's plans\n\nI've used Claude pretty much daily since April. I've used Codex for three days. My workflow was built around Claude's patterns. So there's definitely a Claude bias here - but that's exactly what makes the results interesting.\n\n# The Highlights\n\n**Research phase:**\u00a0Claude recommended Voyage AI for embeddings because they're an \"Anthropic partner.\" I laughed out loud. Claude citing its creator's business partnerships as a technical justification is either endearing or concerning - especially given the flak OpenAI gets for planned ads. Turns out Anthropic may have beat them to it...\n\n**Planning phase:**\u00a0Claude produces cleaner markdown with actionable code snippets. Codex produces XML-based architecture docs. Different approaches, both reasonable.\n\n**Review phase:**\u00a0This is where it got interesting.\n\nI asked each model to critique both plans (without telling them who wrote which). Round 1 went as expected\u2014each model preferred its own plan.\n\nThen Codex dropped this:\n\n&gt;\n\nAt first look Claude's plan was reasonable to me - it looked clean, well-structured, thoroughly reasoned. It also contained bugs / contradictions.\n\nCodex found two more issues:\n\n* Claude specified both \"hard-fail on missing credentials\" AND \"graceful fallback\"\u2014contradictory\n* A tool naming collision with an existing tool\n\nWhen I showed Claude what Codex found:\n\n&gt;\n\nThe plan was better off by having a second pair of eyes.\n\n# My Takeaway\n\nThe winner isn't Codex or Claude - it's running both.\n\nFor daily coding, I've switched to Codex as my primary driver. It felt more adherent to instructions and more thorough (plus the novelty is energizing). Additionally, when compared to Codex, Claude seemed a bit... ditzy. I never noticed it when using Claude alone, but compared to Codex, the difference was noticeable.\n\nFor anything that matters (architecture decisions, complex integrations), I now run it past both models before implementing.\n\nThe $200/month question isn't \"which model is best?\" It's \"when is a second opinion worth the overhead?\" For me: any time I find myself wondering if the wool is being pulled over my eyes by a robot (which it turns out is pretty often).\n\nSorry Anthropic, you lost the daily driver slot for now (try again next month!). But Claude's still on the team.\n\n# The Receipts\n\nI documented everything. Full transcripts, the actual plans, side-by-side comparisons. If you want to see exactly what happened (or disagree with my conclusions), the raw materials are on my blog:\u00a0[https://benr.build/blog/claude-vs-codex-messy-middle](https://benr.build/blog/claude-vs-codex-messy-middle)\n\nThis is n=1. But it's a documented n=1 with receipts, which is more than most AI comparisons offer.\n\nCurious if anyone else has tried running multiple models on the same task. What patterns have you noticed?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q6m1ui/opus_45_headtohead_against_codex_52_xhigh_on_a/",
+    "author": "u/bisonbear2",
+    "score": 48,
+    "date": "2026-01-07",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 25
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.594185"
+  },
+  {
+    "id": "ce947511244d",
+    "title": "I built a \"Forest of Trees\" interface for LLMs because linear chats (like ChatGPT) were getting too messy for my study sessions.",
+    "content": "Hi r/ChatGPTCoding\n\nMy name is Farrell, I want to share about the tool I made to solve a frustration I have when using ChatGPT\n\n\u00a0I like using LLMs to study, and whenever I do, I have a\u00a0*lot*\u00a0of side questions.\n\n* \"Wait, what does that term mean?\"\n* \"Can you explain that specific concept?\"\n\nIn ChatGPT (*or Gemini, Claude, etc*), whenever I ask these side questions, it clutters the main thread. Often times, I even ask follow up questions TO my side questions. So I either have to scroll to where I left off, `Ctrl+F` , or start a new chat and lose all the context. ChatGPT has folders and their own branching feature, but it doesn't feel enough for me.\n\nSo I built\u00a0**Divi**. It works like a \"forest of trees\" or \"fractal\". Whenever you have a side question, you just\u00a0**Branch**\u00a0off. Branching gives you a clean chatroom, while remembering the full conversation you had earlier (from the parent branch).\n\nOnce you\u2019re satisfied with the answer, you can jump back to your original chat like nothing happened. You can branch as much as you want, even from other branches.\n\nThat's the gist of Divi, I originally intended it as a personal tool, but having heard my friends asking to try it out, I tried making it online. See if it might help improve your \"Quality of Life\" when using chatGPT. It's on: [https://trydivi.vercel.app/](https://trydivi.vercel.app/) (I'll remove the link if it violates the subreddit rules \ud83d\ude4f\ud83c\udffb)\n\nHere are more explanation on the other features I made:\n\nObviously, creating infinite branches can get confusing. To fix this, I added a\u00a0**Graph Visualization**\u00a0(inspired by Obsidian). Every branch is a node, so you can visually see your \"train of thought\" and jump between conversations just by clicking on the graph.\n\n**How \"Context\" Works in Divi:** Unlike standard chats where context is just \"the last 50 messages,\" Divi treats context like a family tree.\n\n* **Vertical Inheritance:**\u00a0When you reply to a message, the AI sees the full history of that \"Branch\" all the way back to the \"Root.\"\n* **Horizontal Isolation:**\u00a0Sibling branches are invisible to each other. If you branch off to talk about\u00a0*Topic A*, and then make a new branch for\u00a0*Topic B*, the AI in Branch B knows nothing about Branch A. This keeps your clean slate truly clean.\n\nAnd I added a few things I personally needed,\n\n**1. The Global Backpack (Topic-Specific Memory):**\u00a0This sits at the \"Root\" of your tree. Any text you put here is injected into\u00a0*every single branch*\u00a0of that specific topic.\n\n* You start a \"Cooking Research\" chat, you put \"I am allergic to peanuts\" in the Global Backpack. Now, whether you are 5 branches deep looking at Thai food or Italian food, the AI knows \"you are allergic to peanuts\".\n* This memory\u00a0stays\u00a0in the Cooking chat. If you start a new Root for \"Studying LLMs,\" the AI won't know that you \"have a peanut allergy. It isolates memory per topic.\n\n**2. The Universal Backpack:**\u00a0Since the Global Backpack\u00a0*only*\u00a0lives inside its own topic, I needed a place for instructions I want every single AI to know. You can head to\u00a0**Settings -&gt; Universal Memory**\u00a0to add instructions that apply globally across\u00a0*all*\u00a0your roots and branches. This is perfect for instructions like \"Always explain things like I'm 5,\" or \"Code in Python unless specified.\" It ensures your preferences are respected everywhere, not just in one specific chat.\n\n**3. Model Switching:**\u00a0You can switch models at any point of the conversation while retaining all the chat history.\n\nDivi free to use, but since I'm paying for the API calls out of pocket, I require Google Sign-In to prevent bot attacks and huge cloud bills.\n\n* **Free Tier:**\u00a0100k tokens/month (enough for casual use).\n* **For Testers:**\u00a0If anyone here actually finds this useful and hits the limit, just DM me or leave feedback. I\u2019d be happy to upgrade you to the 3M token tier for free in exchange for feedbacks!\n\nI\u2019d really appreciate any feedback to help improve it. Thanks!\n\nTry Divi: [https://trydivi.vercel.app/](https://trydivi.vercel.app/)\n\nP.S (I used AI a bit to help structure my words a bit since I suck and tend to overexplain things. I hope that's okay here.)",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q3d0ve/i_built_a_forest_of_trees_interface_for_llms/",
+    "author": "u/BonkNotSus",
+    "score": 42,
+    "date": "2026-01-03",
+    "category": "command",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 25
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.594842"
+  }
+]
