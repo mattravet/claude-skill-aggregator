@@ -1,26 +1,5 @@
 [
   {
-    "id": "c3d5b021ed16",
-    "title": "Any alternatives to Cursor Ultra?",
-    "content": "Hi guys,\n\nBeen using Ultra for maybe 4-5 months now, this is my usage which I max every month and usually go over a little with set costs. \n\nMainly using Claude 4.5 Opus just due to accuracy, plus larger code base. \n\nI do use Anti Gravity a little on Pro but it's not quite as good just due to the context that Cursor seems to understand the codebase better. But that gets me through with some Opus. \n\nI'm enjoying Gemini Flash alot as well especially on cost side.\n\nBut not sure if it's worth it to go to Claude Code or anyone else going to work out cheaper? Anti gravity seems to be very good value right now but there just about to change the pro plan with weekly limits, I could invest more time to get context better. \n\nAnyone have any recommendations?",
-    "source": "reddit",
-    "url": "https://reddit.com/r/cursor/comments/1q88rxb/any_alternatives_to_cursor_ultra/",
-    "author": "u/Nervous_Smile_9375",
-    "score": 33,
-    "date": "2026-01-09",
-    "category": "prompt-pattern",
-    "metadata": {
-      "subreddit": "r/cursor",
-      "num_comments": 43
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.573130"
-  },
-  {
     "id": "1a45f6117d14",
     "title": "Opus pricing on cursor is crazy high comparing to Claude Code",
     "content": "It rly feels like on a pro+ plan you can  end your subscription in one day with opus. I feel like the limits are 10+ bigger in Claude code(comparing to a basic 20$ plan). Unless cursor get a special pricing for Opus(like sonnet level) i have a feeling that the cost efficiency is not there and wont be there for a long time. Some ppl are saying they are getting 1500$+ worth of tokens on just a 200$ plan. its just crazy \n\nwhat do you think?",
