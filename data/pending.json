@@ -1,26 +1,5 @@
 [
   {
-    "id": "10972c49e928",
-    "title": "Should I get Cursor Pro or Claude Pro(includes Claude Code)",
-    "content": "so as a avid vibe coder who has mainly used Gpt Codex inside Vs Code as its included with Gpt Plus, Im looking to expand my horizons to different vibe coding models so i can build bigger projects, which one should i choose? Cursor Pro which has many other models, or Claude Pro which includes Claude Code? Please let me know thank you. I build in Web3 and AI mostly.",
-    "source": "reddit",
-    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q5mnr8/should_i_get_cursor_pro_or_claude_proincludes/",
-    "author": "u/reddead313",
-    "score": 20,
-    "date": "2026-01-06",
-    "category": "prompt-pattern",
-    "metadata": {
-      "subreddit": "r/ChatGPTCoding",
-      "num_comments": 63
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.574942"
-  },
-  {
     "id": "0cba8eba6b0a",
     "title": "Sudden massive increase in insane hyping of agentic LLMs on twitter",
     "content": "Has anyone noticed this? It's suddenly gotten completely insane. Literally nothing has changed at all in the past few weeks but the levels of bullshit hyping have gone through the roof. It used to be mostly vibesharts that had no idea what they're doing but actual engineers have started yapping complete insanity about running a dozen agents concurrently as an entire development team building production ready complex apps while you sleep with no human in the loop.\n\nIt's as though claude code just came out a week ago and hasn't been more or less the same for months at this point. \n\nWtf is going on",

@@ -159,5 +159,28 @@
     "added_at": "2026-01-10T19:48:17.574458",
     "rejected_at": "2026-01-11T09:27:11.321731",
     "rejection_reason": "Pricing complaint, not a tip"
+  },
+  {
+    "id": "10972c49e928",
+    "title": "Should I get Cursor Pro or Claude Pro(includes Claude Code)",
+    "content": "so as a avid vibe coder who has mainly used Gpt Codex inside Vs Code as its included with Gpt Plus, Im looking to expand my horizons to different vibe coding models so i can build bigger projects, which one should i choose? Cursor Pro which has many other models, or Claude Pro which includes Claude Code? Please let me know thank you. I build in Web3 and AI mostly.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ChatGPTCoding/comments/1q5mnr8/should_i_get_cursor_pro_or_claude_proincludes/",
+    "author": "u/reddead313",
+    "score": 20,
+    "date": "2026-01-06",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/ChatGPTCoding",
+      "num_comments": 63
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.574942",
+    "rejected_at": "2026-01-11T09:27:11.662005",
+    "rejection_reason": "Question post, not a tip"
   }
 ]
