@@ -1,26 +1,5 @@
 [
   {
-    "id": "0726e5c0d945",
-    "title": "The stats they must have gathered from this are probably insane",
-    "content": "Just imagine the sheer volume of data from everyone using Opus for so long, especially with people running multiple instances at once. I really hope they drop a blog post breaking down what they learned. it would be such a fascinating read.",
-    "source": "reddit",
-    "url": "https://reddit.com/r/Anthropic/comments/1q6wz8r/the_stats_they_must_have_gathered_from_this_are/",
-    "author": "u/LittleBottom",
-    "score": 32,
-    "date": "2026-01-07",
-    "category": "prompt-pattern",
-    "metadata": {
-      "subreddit": "r/Anthropic",
-      "num_comments": 13
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.572038"
-  },
-  {
     "id": "f72877c727f2",
     "title": "\u201cBonus\u201d should be the new default",
     "content": "Look, for $200/month - getting hit with hourly based caps and then being asked to spend more money by allowing \u201cextra usage\u201d \u2014 it is terrible from a consumer experience. \n\nThe week-long bonus was what I would consider fair for weekly/hourly usage and should become the new Claude Code/Claude standard, and I hope Anthropic considers this.",
