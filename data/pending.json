@@ -67,29 +67,6 @@
     "added_at": "2026-01-10T19:48:17.576466"
   },
   {
-    "id": "f6dfb5bc1863",
-    "title": "Made a plugin so Claude can message me on Telegram when it needs a decision",
-    "content": "When I run longer Claude Code tasks, I often miss when Claude asks a question or finishes, because I\u2019m not staring at the terminal.\n\nI built a small plugin that:\nsends Claude\u2019s questions to Telegram\nlets me reply from my phone\ncontinues execution once I respond\n\nThis made agent workflows feel more asynchronous and practical.\n\nNot trying to replace anything big, just scratching my own itch.\n\nWould love feedback from other Claude Code users:\ndoes this fit your workflow?\nany concerns with this approach?\n\nRepo:\nhttps://github.com/vibe-with-me-tools/agent-reachout",
-    "source": "reddit",
-    "url": "https://reddit.com/r/ClaudeAI/comments/1q929p1/made_a_plugin_so_claude_can_message_me_on/",
-    "author": "u/SubstantialMess9927",
-    "score": 73,
-    "date": "2026-01-10",
-    "category": "workflow",
-    "metadata": {
-      "subreddit": "r/ClaudeAI",
-      "num_comments": 29
-    },
-    "scan": {
-      "risk_level": "warning",
-      "flags": [
-        "\u26a1 External URL"
-      ],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.576970"
-  },
-  {
     "id": "fd1450535bd9",
     "title": "Open source VS Code extension: Get Copilot-style completions with your existing Claude Max tokens",
     "content": "If you're paying $100-200/month for Claude Max, you probably have unused token capacity. I built a tool to put those tokens to work.\n\n  I love Claude Code CLI for complex, multi-file refactoring and agentic workflows. But sometimes I just want a quick inline completion while typing\u2014and I was tired of paying $19/month for GitHub Copilot on top of my Max subscription.\n\n  So I built Sidekick for Max: a VS Code extension that gives you Copilot-style inline completions powered by your existing Claude Max subscription. No extra cost, no API keys, no separate account.\n\n  How it works:\n  - A local server calls Claude Code CLI to generate completions\n  - Uses Haiku for fast, lightweight inline suggestions (minimal token usage)\n  - Uses Opus for code transforms when you need higher quality refactoring\n  - Your Max subscription handles billing\u2014just authenticate with claude auth\n\n  Features:\n  - Inline completions as you type\n  - Code transforms: select code, press Ctrl+Shift+M, describe what you want\n\n  The token efficiency angle:\n  Most of us aren't hitting our 5-hour usage limits consistently. This puts that unused capacity to work without impacting your CLI workflows. Haiku completions are cheap and fast\u2014you can use them freely throughout the day.\n\n  Links:\n  - https://marketplace.visualstudio.com/items?itemName=CesarAndresLopez.sidekick-for-max\n  - https://github.com/cesarandreslopez/sidekick-for-claude-max\n\n  Would love feedback from other Claude Max users. What features would make this more useful for your workflow?",

@@ -232,5 +232,30 @@
     "added_at": "2026-01-10T19:48:17.591363",
     "rejected_at": "2026-01-11T09:27:12.740164",
     "rejection_reason": "Product announcement"
+  },
+  {
+    "id": "f6dfb5bc1863",
+    "title": "Made a plugin so Claude can message me on Telegram when it needs a decision",
+    "content": "When I run longer Claude Code tasks, I often miss when Claude asks a question or finishes, because I\u2019m not staring at the terminal.\n\nI built a small plugin that:\nsends Claude\u2019s questions to Telegram\nlets me reply from my phone\ncontinues execution once I respond\n\nThis made agent workflows feel more asynchronous and practical.\n\nNot trying to replace anything big, just scratching my own itch.\n\nWould love feedback from other Claude Code users:\ndoes this fit your workflow?\nany concerns with this approach?\n\nRepo:\nhttps://github.com/vibe-with-me-tools/agent-reachout",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q929p1/made_a_plugin_so_claude_can_message_me_on/",
+    "author": "u/SubstantialMess9927",
+    "score": 73,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 29
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.576970",
+    "rejected_at": "2026-01-11T09:27:13.232215",
+    "rejection_reason": "Product announcement"
   }
 ]
