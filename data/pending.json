@@ -1,26 +1,5 @@
 [
   {
-    "id": "1a45f6117d14",
-    "title": "Opus pricing on cursor is crazy high comparing to Claude Code",
-    "content": "It rly feels like on a pro+ plan you can  end your subscription in one day with opus. I feel like the limits are 10+ bigger in Claude code(comparing to a basic 20$ plan). Unless cursor get a special pricing for Opus(like sonnet level) i have a feeling that the cost efficiency is not there and wont be there for a long time. Some ppl are saying they are getting 1500$+ worth of tokens on just a 200$ plan. its just crazy \n\nwhat do you think?",
-    "source": "reddit",
-    "url": "https://reddit.com/r/cursor/comments/1q4vmu4/opus_pricing_on_cursor_is_crazy_high_comparing_to/",
-    "author": "u/SnooHesitations6473",
-    "score": 84,
-    "date": "2026-01-05",
-    "category": "prompt-pattern",
-    "metadata": {
-      "subreddit": "r/cursor",
-      "num_comments": 38
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.573659"
-  },
-  {
     "id": "8eae35ee747e",
     "title": "Cursor prices are out of control",
     "content": "I'm a pretty experienced engineer (15+ YOE). I've been using Cursor here and there for a while and have been a paid customer since Oct 2024 ($20 plan).\n\nMy Nov invoice was on Nov 20. I started working on my own project in early Dec, so plenty of time until the next invoice (Dec 20), right? Well, ever since I started my project, my spending has gone through the roof.\n\nSee the timeline below:\n\n \\- Nov 20: regular $20 invoice, life's good\n\n \\- Dec 1: started working on my project\n\n \\- Dec 14: consumed all the limits, paid $20.04 more\n\n \\- Dec 18: consumed all the limits, paid $40 more\n\n \\- Dec 20: (repeats), paid $20 more\n\n \\- Dec 23: paid $33.03 more\n\n \\- Dec 24: paid $61.09 more\n\n \\- Dec 26: paid $32.31 (switched to Pro+)\n\n \\- Dec 30: paid $81.07 more\n\n \\- Jan 03: paid $101.40 more\n\nMy current on-demand usage is $300 out of a $400 limit (kept raising the limits).\n\nSo, what the actual fk? Yes, I mostly use Opus because other models produce garbage. From time to time, I use Composer just to get some quick fixes done, but Opus is still doing all the heavy lifting.\n\nI tried Claude Code before, but I kept having the feeling that I was losing a mental connection with my code after several sessions, so I switched back to Cursor. I'm not vibe coding. \n\nAny suggestions on how to minimize spending?",

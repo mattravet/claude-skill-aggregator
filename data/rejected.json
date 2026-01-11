@@ -113,5 +113,28 @@
     "added_at": "2026-01-10T19:48:17.573130",
     "rejected_at": "2026-01-11T09:27:10.609776",
     "rejection_reason": "Question post, not a tip"
+  },
+  {
+    "id": "1a45f6117d14",
+    "title": "Opus pricing on cursor is crazy high comparing to Claude Code",
+    "content": "It rly feels like on a pro+ plan you can  end your subscription in one day with opus. I feel like the limits are 10+ bigger in Claude code(comparing to a basic 20$ plan). Unless cursor get a special pricing for Opus(like sonnet level) i have a feeling that the cost efficiency is not there and wont be there for a long time. Some ppl are saying they are getting 1500$+ worth of tokens on just a 200$ plan. its just crazy \n\nwhat do you think?",
+    "source": "reddit",
+    "url": "https://reddit.com/r/cursor/comments/1q4vmu4/opus_pricing_on_cursor_is_crazy_high_comparing_to/",
+    "author": "u/SnooHesitations6473",
+    "score": 84,
+    "date": "2026-01-05",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/cursor",
+      "num_comments": 38
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.573659",
+    "rejected_at": "2026-01-11T09:27:10.971436",
+    "rejection_reason": "Pricing discussion, not a tip"
   }
 ]
