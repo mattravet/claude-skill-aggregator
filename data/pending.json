@@ -136,29 +136,6 @@
     "added_at": "2026-01-10T19:48:17.591363"
   },
   {
-    "id": "25cb206a495a",
-    "title": "LLM hallucinations aren't bugs. They're compression artifacts. We just built a Claude Code extension that detects and self-corrects them before writing any code.",
-    "content": "I usually post on Linkedin but people mentioned there's a big community of devs who might benefit from this here so I decided to make a post just in case it helps you guys. Happy to answer any questions/ would love to hear feedback. Sorry if it reads markety, it's copied from the Linkedin post I made where you don't get much post attention if you don't write this way:\n\nStrawberry launches today it's Free. Open source. Guaranteed by information theory.  \n  \nThe insight: When Claude confidently misreads your stack trace and proposes the wrong root cause it's not broken. It's doing exactly what it was trained to do: compress the internet into weights, decompress on demand. When there isn't enough information to reconstruct the right answer, it fills gaps with statistically plausible but wrong content.  \n  \nThe breakthrough: We proved hallucinations occur when information budgets fall below mathematical thresholds. We can calculate exactly how many bits of evidence are needed to justify any claim, before generation happens.  \nNow it's a Claude Code MCP. One tool call: detect\\_hallucination  \n  \nWhy this is a game-changer?  \n  \nInstead of debugging Claude's mistakes for 3 hours, you catch them in 30 seconds. Instead of \"looks right to me,\" you get mathematical confidence scores. Instead of shipping vibes, you ship verified reasoning. Claude doesn't just flag its own BS, it self-corrects, runs experiments, gathers more real evidence, and only proceeds with what survives. Vibe coding with guardrails.  \n  \nReal example:  \n  \nClaude root-caused why a detector I built had low accuracy. Claude made 6 confident claims that could have led me down the wrong path for hours. I said: \"Run detect\\_hallucination on your root cause reasoning, and enrich your analysis if any claims don't verify.\"  \n  \nResults:  \nClaim 1: \u2705 Verified (99.7% confidence)  \nClaim 4: \u274c Flagged (0.3%) \u2014 \"My interpretation, not proven\"  \nClaim 5: \u274c Flagged (20%) \u2014 \"Correlation \u2260 causation\"  \nClaim 6: \u274c Flagged (0.8%) \u2014 \"Prescriptive, not factual\"  \nClaude's response: \"I cannot state interpretive conclusions as those did not pass verification.\"  \n  \nRe-analyzed. Ran causal experiments. Only stated verified facts. The updated root cause fixed my detector and the whole process finished in under 5 minutes.  \n  \nWhat it catches:  \n  \nPhantom citations, confabulated docs, evidence-independent answers  \nStack trace misreads, config errors, negation blindness, lying comments  \nCorrelation stated as causation, interpretive leaps, unverified causal chains  \nDocker port confusion, stale lock files, version misattribution  \n  \nThe era of \"trust me bro\" vibe coding is ending.  \nGitHub: [https://github.com/leochlon/pythea/tree/main/strawberry](https://github.com/leochlon/pythea/tree/main/strawberry)  \nBase Paper: [https://arxiv.org/abs/2509.11208](https://arxiv.org/abs/2509.11208)  \n(New supporting pre-print on procedural hallucinations drops next week.)\n\nMIT license. 2 minutes to install. Works with any OpenAI-compatible API.",
-    "source": "reddit",
-    "url": "https://reddit.com/r/Anthropic/comments/1q9bdg6/llm_hallucinations_arent_bugs_theyre_compression/",
-    "author": "u/Upset-Presentation28",
-    "score": 30,
-    "date": "2026-01-10",
-    "category": "workflow",
-    "metadata": {
-      "subreddit": "r/Anthropic",
-      "num_comments": 35
-    },
-    "scan": {
-      "risk_level": "warning",
-      "flags": [
-        "\u26a1 External URL"
-      ],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.592089"
-  },
-  {
     "id": "a8da2b791929",
     "title": "\u201cYou're 100% right. This is unacceptable.\u201d",
     "content": "Seriously.\n\n$300/mo.\n\n\n\n=== === === === === === === === === === === === \n\n\n\nUPDATE: 8hrs later:\n\nhttps://preview.redd.it/qphk7is7aecg1.png?width=1222&amp;format=png&amp;auto=webp&amp;s=e2ba875938d426873604012666933cad09ea491e\n\nFuck the cynics. Claude is a real one. That's why I started r/ClaudeHomies and now reviving it because I'm so disappointed at how toxic the community in this sub is.\n\nAntrhopic has built not just the best LLM in history, but probably one of the best products in the world - and probably one the best tools humanity have ever had since it's inception.\n\nBut Anthropic is fucking up recently and killing this product, and should be called out. We're not shills, we complain becase we love the product, loyal customers, pay a lot, and want things to be fixed.\n\nIf you think Anthropic can do no wrong, you ain't my homie.",
