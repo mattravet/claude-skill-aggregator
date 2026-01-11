@@ -1,0 +1,20 @@
+{
+  "id": "51f5d016f260",
+  "title": "I feel like I've just had a breakthrough with how I handle large tasks in Claude Code",
+  "content": "And it massively reduced my anxiety!\n\nI wanted to share something that felt like a genuine breakthrough for me in case it helps others who are building large projects with Claude Code.\n\nThe problem was this: When I discover missing or incomplete implementations, the plans would often become too large in scope. Things would get skipped, partially implemented, or quietly forgotten. I tried to compensate by generating more reports and saving more analysis files\u2026 and that actually made things worse. I ended up with a growing pile of documents I had to mentally reconcile with the actual codebase.\n\nThe result: constant background anxiety and a feeling that I was losing control of the codebase.\n\nToday I tried something different \u2014 and it was like a weight lifted off my chest.\n\nInstead of saving reports or plans to .md files, I told Claude to insert TODO stubs directly into the relevant files wherever something was missing, incomplete, or intentionally deferred - not vague TODOs, but explicit, scoped ones.\n\nNow:\n- The codebase itself is the source of truth\n- Missing work lives exactly where it belongs\n- I can run a simple script to list all TODOs\n- I can implement them one by one or group small ones logically\n- I write small, focused plans instead of massive ones\n\nI no longer have to \"remember\" what's left to do, or cross-reference old/overlapping reports that may already be outdated. If something isn't done, it's visible in the code. If it's done, the TODO disappears.\n\nThis had an immediate psychological effect:\n- Less overwhelm\n- No fear of missing things\n- No guilt about unfinished analysis\n- Much better alignment with how Claude actually performs (small scope, clear intent)\n\nEmbedding intent directly into the code turned cognitive debt into a clear, executable task list.\n\nIf you're struggling with large Claude Code plans, skipped steps, or anxiety from too much analysis: try letting the codebase carry the truth. Let TODOs be first-class citizens.",
+  "source": "reddit",
+  "url": "https://reddit.com/r/ClaudeAI/comments/1q85tlf/i_feel_like_ive_just_had_a_breakthrough_with_how/",
+  "author": "u/wynwyn87",
+  "score": 301,
+  "date": "2026-01-09",
+  "category": "workflow",
+  "metadata": {
+    "subreddit": "r/ClaudeAI"
+  },
+  "scan": {
+    "risk_level": "safe",
+    "flags": [],
+    "llm_analysis": null
+  },
+  "approved_at": "2026-01-11T08:49:59.757077"
+}

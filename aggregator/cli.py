@@ -8,7 +8,7 @@ from rich.table import Table
 from rich.panel import Panel
 from rich.syntax import Syntax
 
-from . import fetcher, scanner, storage
+from . import fetcher, scanner, storage, steering, synthesizer, integrator
 
 console = Console()
 CONFIG_PATH = Path(__file__).parent.parent / "config.yaml"
@@ -145,6 +145,216 @@ def stats():
     """Show aggregator statistics."""
     s = storage.get_stats()
     console.print(Panel(f"📥 Pending: {s['pending']}\n✅ Approved: {s['approved']}\n🚫 Rejected: {s['rejected']}\n👁️  Total seen: {s['total_seen']}", title="Stats"))
+
+@cli.command()
+@click.argument('skill_id')
+@click.option('--target', '-t', default=None, help='Target file path relative to steering repo')
+@click.option('--no-pr', is_flag=True, help='Skip PR creation, just create local branch')
+@click.option('--raw', is_flag=True, help='Skip synthesis, use raw content')
+def promote(skill_id, target, no_pr, raw):
+    """Promote an approved skill to steering repo via PR.
+
+    By default, uses Claude to synthesize actionable implementation from raw content.
+    Use --raw to skip synthesis and use original content.
+    """
+    config = load_config()
+
+    # Find the skill in approved library
+    approved = storage.get_approved()
+    skill = next((s for s in approved if s['id'] == skill_id or s['id'].startswith(skill_id)), None)
+
+    if not skill:
+        console.print(f"[red]Skill {skill_id} not found in approved library.[/red]")
+        console.print("[dim]Use 'skill-agg library' to see approved skills.[/dim]")
+        return
+
+    console.print(f"[bold]Promoting:[/bold] {skill['title'][:60]}")
+    console.print(f"[dim]Category: {skill.get('category', 'unknown')} -> {steering.get_target_file(skill.get('category', 'misc')).name}[/dim]")
+
+    # Synthesize unless --raw flag is set
+    if not raw and not skill.get('implementation'):
+        import os
+        if not os.getenv('ANTHROPIC_API_KEY'):
+            console.print("[yellow]No ANTHROPIC_API_KEY set. Using raw content.[/yellow]")
+            console.print("[dim]Set the key in ~/.claude-skill-aggregator/.env for synthesis.[/dim]")
+        else:
+            with console.status("[bold blue]Synthesizing implementation..."):
+                synthesized = synthesizer.synthesize_skill(skill, config)
+                if synthesized:
+                    skill = synthesized
+                    console.print("[green]Synthesized actionable implementation[/green]")
+                else:
+                    console.print("[yellow]Synthesis failed, using raw content[/yellow]")
+
+    with console.status("[bold blue]Creating branch and PR..."):
+        result = steering.promote_skill(skill, target=target, create_pr=not no_pr)
+
+    if result['success']:
+        console.print(f"[green]Success![/green] {result['message']}")
+        if result.get('pr_url'):
+            console.print(f"\n[bold]Review PR:[/bold] {result['pr_url']}")
+        else:
+            console.print(f"\n[dim]Branch: {result['branch']}[/dim]")
+            console.print("[dim]To create PR manually: cd ~/claude-steering && gh pr create[/dim]")
+    else:
+        console.print(f"[red]Failed:[/red] {result['message']}")
+
+@cli.command()
+@click.argument('skill_id')
+def synthesize(skill_id):
+    """Preview synthesized implementation for a skill (without promoting)."""
+    import os
+    config = load_config()
+
+    if not os.getenv('ANTHROPIC_API_KEY'):
+        console.print("[red]ANTHROPIC_API_KEY not set.[/red]")
+        console.print("[dim]Add it to ~/claude-skill-aggregator/.env[/dim]")
+        return
+
+    # Find in approved or pending
+    items = storage.get_approved() + storage.get_pending()
+    skill = next((s for s in items if s['id'] == skill_id or s['id'].startswith(skill_id)), None)
+
+    if not skill:
+        console.print(f"[red]Skill {skill_id} not found.[/red]")
+        return
+
+    console.print(f"[bold]Synthesizing:[/bold] {skill['title'][:60]}")
+
+    with console.status("[bold blue]Analyzing and creating implementation..."):
+        result = synthesizer.synthesize_skill(skill, config)
+
+    if not result:
+        console.print("[red]Synthesis failed.[/red]")
+        return
+
+    impl = result.get('implementation', {})
+
+    console.print(Panel(impl.get('summary', 'N/A'), title="Summary"))
+
+    if impl.get('instructions'):
+        console.print(Panel(impl['instructions'], title="How to Implement"))
+
+    if impl.get('code') and impl['code'].lower() != 'n/a':
+        console.print(Panel(impl['code'], title="Code"))
+
+    if impl.get('claude_instructions') and impl['claude_instructions'].lower() != 'n/a':
+        console.print(Panel(impl['claude_instructions'], title="Add to CLAUDE.md"))
+
+@cli.command()
+def sync():
+    """Sync steering files to actual locations via symlinks."""
+    config = load_config()
+
+    console.print("[bold]Syncing steering files...[/bold]")
+
+    try:
+        results = steering.sync_to_locations(config)
+        for location, message in results.items():
+            console.print(f"  [green]{location}:[/green] {message}")
+        console.print("\n[green]Sync complete![/green]")
+    except RuntimeError as e:
+        console.print(f"[red]Error:[/red] {e}")
+
+@cli.command()
+def promoted():
+    """List skills that have been promoted to steering repo."""
+    items = steering.list_promoted()
+    if not items:
+        console.print("[yellow]No skills promoted yet.[/yellow]")
+        console.print("[dim]Use 'skill-agg promote <id>' to promote approved skills.[/dim]")
+        return
+
+    table = Table(title="Promoted Skills")
+    table.add_column("File", width=30)
+    table.add_column("Size", justify="right", width=10)
+    for item in items:
+        table.add_row(item['file'], f"{item['size']} bytes")
+    console.print(table)
+
+@cli.command()
+@click.argument('skill_id')
+def integrate(skill_id):
+    """Synthesize and integrate a skill directly into CLAUDE.md via PR.
+
+    This command:
+    1. Synthesizes the skill into actionable content
+    2. Analyzes your existing CLAUDE.md
+    3. Determines if this adds/modifies/replaces functionality
+    4. Creates a PR with the integrated changes
+    """
+    import os
+    config = load_config()
+
+    if not os.getenv('ANTHROPIC_API_KEY'):
+        console.print("[red]ANTHROPIC_API_KEY not set.[/red]")
+        return
+
+    # Find skill in approved library
+    approved = storage.get_approved()
+    skill = next((s for s in approved if s['id'] == skill_id or s['id'].startswith(skill_id)), None)
+
+    if not skill:
+        console.print(f"[red]Skill {skill_id} not found in approved library.[/red]")
+        return
+
+    console.print(f"[bold]Integrating:[/bold] {skill['title'][:60]}")
+
+    # Step 1: Synthesize if needed
+    if not skill.get('implementation'):
+        with console.status("[bold blue]Step 1/3: Synthesizing implementation..."):
+            skill = synthesizer.synthesize_skill(skill, config)
+            if not skill:
+                console.print("[red]Synthesis failed.[/red]")
+                return
+        console.print("[green]✓[/green] Synthesized actionable content")
+    else:
+        console.print("[dim]✓ Already synthesized[/dim]")
+
+    # Step 2: Integrate into CLAUDE.md
+    with console.status("[bold blue]Step 2/3: Analyzing and integrating..."):
+        integration = integrator.analyze_and_integrate(skill, config)
+
+    if not integration:
+        console.print("[red]Integration analysis failed.[/red]")
+        return
+
+    change_type = integration['change_type']
+    emoji = {'addition': '➕', 'modification': '✏️', 'replacement': '🔄', 'reference_only': '📚'}.get(change_type, '📝')
+
+    console.print(f"[green]✓[/green] Analysis complete: {emoji} {change_type.upper()}")
+    console.print(f"[dim]  {integration['summary']}[/dim]")
+
+    if integration['sections_affected']:
+        console.print(f"[dim]  Sections: {', '.join(integration['sections_affected'])}[/dim]")
+
+    # Step 3: Create PR
+    if integration['integrated_content']:
+        with console.status("[bold blue]Step 3/3: Creating PR..."):
+            result = steering.create_integration_pr(
+                skill=skill,
+                integrated_content=integration['integrated_content'],
+                pr_body=integrator.format_integration_pr_body(skill, integration),
+                change_type=change_type
+            )
+
+        if result['success']:
+            console.print(f"[green]✓[/green] PR created!")
+            if result.get('pr_url'):
+                console.print(f"\n[bold]Review PR:[/bold] {result['pr_url']}")
+            else:
+                console.print(f"[dim]Branch: {result['branch']}[/dim]")
+        else:
+            console.print(f"[red]Failed:[/red] {result['message']}")
+    else:
+        console.print("\n[yellow]No CLAUDE.md changes needed.[/yellow]")
+        console.print("[dim]This skill is reference material only.[/dim]")
+
+        # Show the reference content
+        if integration.get('instructions'):
+            console.print(Panel(integration['instructions'], title="Implementation Steps"))
+        if integration.get('code') and integration['code'].lower() != 'n/a':
+            console.print(Panel(integration['code'], title="Code"))
 
 def main():
     cli()

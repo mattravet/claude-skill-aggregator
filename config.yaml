@@ -42,3 +42,13 @@ export:
   include_metadata: true
   auto_commit: true
   commit_prefix: "skills:"
+
+# Steering file sync configuration
+sync:
+  # Map project names to their local paths
+  # The steering repo path is: ~/claude-steering/projects/<project-name>/CLAUDE.md
+  # This creates a symlink at: <project-path>/CLAUDE.md
+  projects: {}
+    # Example:
+    # my-web-app: ~/projects/my-web-app
+    # my-cli-tool: ~/projects/my-cli-tool
