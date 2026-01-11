@@ -1,26 +1,5 @@
 [
   {
-    "id": "721b285dbcdb",
-    "title": "Why did you did this? This is the worst news ever",
-    "content": "\" Anthropic changed something last night preventing their Claude Code plans from being used in other clients. Lots of \"buzz\" about this on Twitter etc this morning.\" Matt Rubens, co-founder/CEO of Roo Code\n\nI have always used RooCode and Claude Code was the only provider I used (Max plan). I am not comfortable with the CLI workflow so this is mildly stressing me out.",
-    "source": "reddit",
-    "url": "https://reddit.com/r/ClaudeAI/comments/1q8pel1/why_did_you_did_this_this_is_the_worst_news_ever/",
-    "author": "u/charliecheese11211",
-    "score": 33,
-    "date": "2026-01-09",
-    "category": "workflow",
-    "metadata": {
-      "subreddit": "r/ClaudeAI",
-      "num_comments": 139
-    },
-    "scan": {
-      "risk_level": "safe",
-      "flags": [],
-      "llm_analysis": null
-    },
-    "added_at": "2026-01-10T19:48:17.571455"
-  },
-  {
     "id": "0726e5c0d945",
     "title": "The stats they must have gathered from this are probably insane",
     "content": "Just imagine the sheer volume of data from everyone using Opus for so long, especially with people running multiple instances at once. I really hope they drop a blog post breaking down what they learned. it would be such a fascinating read.",
