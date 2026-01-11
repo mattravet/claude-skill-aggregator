@@ -440,5 +440,28 @@
       "llm_analysis": null
     },
     "added_at": "2026-01-10T19:48:17.594842"
+  },
+  {
+    "id": "bc600a636c62",
+    "title": "I condensed 8 years of product design experience into a Claude skill, the results are impressive",
+    "content": "I'm regularly experimenting and building tools and SaaS side projects in Claude Code; the UI output from Claude is mostly okay-ish and generic (sometimes I also get the purple gradient of doom). I was burning tokens on iteration after iteration trying to get something I wouldn't immediately want to redesign.\n\nSo I built my own skill using my product design experience and distilled it into a design-principles skill focused on:\n\n\u00a0 \\- Dashboard and admin interfaces\n\n\u00a0 \\- Tool/utility UIs\n\n\u00a0 \\- Data-dense layouts that stay clean\n\nI put together a comparison\u00a0[dashboard](https://dashboard-v4-eta.vercel.app/)\u00a0so you can see the before/after yourself.\n\nAs a product designer, I can vouch that the output is genuinely good, not \"good for AI,\" just good. It gets you 80% there on the first output, from which you can iterate.\n\nIf you're building tools/apps and you need UI output that is off-the-bat solid, this might help.\n\nUse the\u00a0[skill](https://github.com/Dammyjay93/claude-design-skill), drop it in your .claude directory, and invoke it with /design-principles.",
+    "source": "reddit",
+    "url": "https://reddit.com/r/Anthropic/comments/1q5df4p/i_condensed_8_years_of_product_design_experience/",
+    "author": "u/Mundane-Iron1903",
+    "score": 21,
+    "date": "2026-01-06",
+    "category": "prompt-pattern",
+    "metadata": {
+      "subreddit": "r/Anthropic",
+      "num_comments": 9
+    },
+    "scan": {
+      "risk_level": "warning",
+      "flags": [
+        "\u26a1 External URL"
+      ],
+      "llm_analysis": "RISK_LEVEL: WARNING\n\nSUMMARY: Cannot verify contents of external GitHub skill repository and Vercel deployment - potential for malicious code injection or backdoors in the downloadable files that would execute in Claude's environment."
+    },
+    "added_at": "2026-01-10T21:49:18.534664"
   }
 ]

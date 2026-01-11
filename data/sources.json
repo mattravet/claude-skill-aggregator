@@ -1,7 +1,7 @@
 {
   "https://reddit.com/r/ClaudeAI/comments/1q85tlf/i_feel_like_ive_just_had_a_breakthrough_with_how/": {
     "id": "6491212fa916",
-    "seen": "2026-01-10T19:48:17.567925"
+    "seen": "2026-01-10T21:49:18.531253"
   },
   "https://reddit.com/r/ClaudeAI/comments/1q99ltk/im_an_ops_guy_claude_code_feels_like_headcount/": {
     "id": "63c91e4decdb",
@@ -90,5 +90,9 @@
   "https://reddit.com/r/ChatGPTCoding/comments/1q3d0ve/i_built_a_forest_of_trees_interface_for_llms/": {
     "id": "ce947511244d",
     "seen": "2026-01-10T19:48:17.595247"
+  },
+  "https://reddit.com/r/Anthropic/comments/1q5df4p/i_condensed_8_years_of_product_design_experience/": {
+    "id": "bc600a636c62",
+    "seen": "2026-01-10T21:49:18.534840"
   }
 }
