@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "id": "63c91e4decdb",
+    "title": "I\u2019m an ops guy. Claude Code feels like headcount compression. What\u2019s everyone actually using it for?",
+    "content": "I\u2019m an ops person. I\u2019ve done the whole range: hyperscaling startups, big corporates, execution roles, Head/Director-level responsibility.\n\nClaude Code is the first \u201ccoding AI\u201d that feels like **headcount compression** for ops work. I built: scripts, dashboards, checkers, reports, pipelines, templates, and small internal tools.\n\nHow I\u2019m using it so far:\n\n* **Processes &amp; SOP systems** (standard work, checklists, enforcement via scripts)\n* **Automations** (glue work between tools, recurring workflows)\n* **Analysis &amp; reporting** (CSV/Sheets exports, summaries, charts, narrative)\n* **Forecasts/projections** (capacity, cost, staffing scenarios)\n* **Project-specific tools** (small CLIs and utilities that make teams faster)\n\nThe leverage is in both directions:\n\n* **Horizontal** (finance, ops, marketing, whatever needs structure &amp; repetition)\n* **Vertical** (it can act like an associate, forecaster, analyst, live-ops manager, depending on how you frame the task and what data you feed it)\n\nIf you want to go full sci-fi, I can even imagine it reducing *my* role long-term. \n\n**Question:** What are people using Claude Code for that\u2019s *not* the obvious \u201cbuild an app /write code/refactor\u201d?  \n  \nI\u2019m especially interested in **non-obvious ops workflows**, internal tools, governance systems, and anything that reliably saves real hours every week. Can be personal or job related!",
+    "source": "reddit",
+    "url": "https://reddit.com/r/ClaudeAI/comments/1q99ltk/im_an_ops_guy_claude_code_feels_like_headcount/",
+    "author": "u/KoojiKondoo",
+    "score": 28,
+    "date": "2026-01-10",
+    "category": "workflow",
+    "metadata": {
+      "subreddit": "r/ClaudeAI",
+      "num_comments": 26
+    },
+    "scan": {
+      "risk_level": "safe",
+      "flags": [],
+      "llm_analysis": null
+    },
+    "added_at": "2026-01-10T19:48:17.569954",
+    "rejected_at": "2026-01-11T09:27:09.071382",
+    "rejection_reason": "Discussion post, not actionable tip"
+  }
+]
